@@ -169,12 +169,12 @@ echo "   ➜ REPO_ROOT: $REPO_ROOT"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 #>- Execute Functions (order matters)
-__repo_init_defaults
-__repo_init_sources
-__repo_init_env
-__repo_init_env_nix
+time_func __repo_init_defaults
+time_func __repo_init_sources
+time_func __repo_init_env
+time_func __repo_init_env_nix
 if [[ "${REPO_HELM_PLUGINS_INSTALL-0}" == "1" ]]; then
-  __repo_init_helm
+  time_func __repo_init_helm
 fi
 
 #>>-------------------------------------------------------------------------

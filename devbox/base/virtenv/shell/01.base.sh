@@ -35,6 +35,12 @@ function kubeconf_perms() {
   chmod 600 ~/.kube/config
 }
 
+function time_func() {
+    local func=$1  # Capture the function name
+    TIMEFORMAT="Time ($func): %Rs"
+    time $func  # Execute the function
+}
+
 #>>-------------------------------------------
 #>>-  Filesystem
 #>>-------------------------------------------

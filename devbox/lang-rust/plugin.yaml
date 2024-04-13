@@ -18,9 +18,15 @@ shell:
   scripts: {}
   init_hook:
     - |
+      log_step "Setup Rust"
+      
       export RUSTUP_HOME="$REPO_ROOT/.devbox/runtimes/rust"
       export LIBRARY_PATH="$LIBRARY_PATH:"$REPO_ROOT/.devbox/nix/profile/default/lib"
       mkdir -p "$RUSTUP_HOME"
-      rustup default "$RUST_VERSION"
+      
+      log_step_sub "Set Rust version to: $RUST_VERSION"
+      rustup default $RUST_VERSION
+      
       # rustup default stable
+      log_step_sub "Run cargo fetch
       cargo fetch &>/dev/null

@@ -51,6 +51,7 @@ tasks:
   devbox:build:
     sources:
       - "{{.REPO_ROOT}}/package.json"
+      - "{{.REPO_ROOT}}/scripts/**/*"
       - "{{.REPO_ROOT}}/devbox/*/plugin.yaml"
       - "{{.REPO_ROOT}}/devbox/*/virtenv/**/*"
     cmds:

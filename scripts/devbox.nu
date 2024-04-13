@@ -1,5 +1,5 @@
 def main [--dir: string] {
-    let version = ($env.REPO_ROOT | path join "package.json" | open)
+    let version = ($env.REPO_ROOT | path join "package.json" | open | get version)
     let input = ($dir | path join "plugin.yaml")
     let output = ($dir | path join "plugin.json")
 

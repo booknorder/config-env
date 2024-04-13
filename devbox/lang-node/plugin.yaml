@@ -1,10 +1,5 @@
 name: bno-lang-node
-version:
-  name: '@booknorder/config-env'
-  version: 0.1.4
-  scripts: {}
-  devDependencies:
-    lefthook: 1.6.10
+version: 0.2.0
 description: Setup runtime Node.js
 readme: README.md
 include: []

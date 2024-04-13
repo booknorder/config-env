@@ -168,6 +168,12 @@ echo "  Initializing Devbox: Base"
 echo "   ➜ REPO_ROOT: $REPO_ROOT"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
+function time_func() {
+  local func=$1 # Capture the function name
+  TIMEFORMAT=" ➜ time ($func): %Rs"
+  time $func # Execute the function
+}
+
 #>- Execute Functions (order matters)
 time_func __repo_init_defaults
 time_func __repo_init_sources

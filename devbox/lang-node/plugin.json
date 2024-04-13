@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-node",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Setup runtime Node.js",
   "readme": "README.md",
   "include": [],

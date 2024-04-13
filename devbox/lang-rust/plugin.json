@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-rust",
-  "version": "0.2.1",
+  "version": "0.4.1",
   "description": "Setup runtime Rust",
   "readme": "README.md",
   "include": [],
@@ -25,7 +25,7 @@
     "scripts": {},
     "init_hook":
     [
-      "export RUSTUP_HOME=\"$REPO_ROOT/.devbox/runtimes/rustup\"\nexport LIBRARY_PATH=\"$LIBRARY_PATH:\"$REPO_ROOT/.devbox/nix/profile/default/lib\"\nmkdir -p \"$RUSTUP_HOME\"\nrustup default \"$RUST_VERSION\"\n# rustup default stable\ncargo fetch &>/dev/null\n"
+      "export RUSTUP_HOME=\"$REPO_ROOT/.devbox/runtimes/rust\"\nexport LIBRARY_PATH=\"$LIBRARY_PATH:\"$REPO_ROOT/.devbox/nix/profile/default/lib\"\nmkdir -p \"$RUSTUP_HOME\"\nrustup default \"$RUST_VERSION\"\n# rustup default stable\ncargo fetch &>/dev/null\n"
     ]
   }
 }

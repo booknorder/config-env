@@ -1,13 +1,15 @@
 {
   "name": "bno-lang-go",
-  "version": "0.2.1",
+  "version": "0.4.1",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],
   "create_files": {},
   "env":
   {
-    "GO_VERSION": "1.20.2"
+    "GO_VERSION": "1.20.2",
+    "GOPATH": "$PWD/.devbox/runtimes/go",
+    "PATH": "$PWD/.devbox/runtimes/go/bin:$PATH"
   },
   "packages":
   {

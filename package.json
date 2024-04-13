@@ -1,6 +1,6 @@
 {
   "name": "@booknorder/config-env",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "scripts": {},
   "devDependencies": {
     "lefthook": "1.6.10"

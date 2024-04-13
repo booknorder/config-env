@@ -13,6 +13,13 @@ tasks:
 
   lefthook: npm exec lefthook {{.CLI_ARGS | default "install"}}
 
+  lefthook:pre-commit:
+    silent: true
+    cmd: |
+      task flake:update
+      git add -A ./flake.lock
+  
+
   lefthook:post-commit:
     silent: true
     cmd: |
@@ -47,7 +54,10 @@ tasks:
         git tag -a "${VERSION}" -m "${MSG}"
         # git push origin main --follow-tags
       fi
-  
+
+  flake:update:
+    cmd: nix flake update
+    sources: ["{{.REPO_ROOT}}/flake.nix"]
 
   devbox:watch:
     cmd: task devbox:build

@@ -1,6 +1,10 @@
 # echo "(v${VERSION}) ${MSG}" > {{.COMMIT_MSG_FILE}}
 # echo {0} {1} {2} {3}
 
+pre-commit:
+  commands:
+    tag:
+      run: devbox run -- task lefthook:pre-commit
 post-commit:
   commands:
     tag:

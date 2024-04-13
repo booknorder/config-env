@@ -18,7 +18,7 @@ shell:
   scripts: {}
   init_hook:
     - |
-      log_step "Setup Rust"
+      log_header "Setup Rust"
       echo "Setup Rust: $RUST_VERSION"
       
       export RUSTUP_HOME="$REPO_ROOT/.devbox/runtimes/rust"
@@ -26,8 +26,10 @@ shell:
       mkdir -p "$RUSTUP_HOME"
       
       log_step_sub "Set Rust version to: $RUST_VERSION"
-      rustup default $RUST_VERSION
+      rustup default "$RUST_VERSION"
       
       # rustup default stable
       log_step_sub "Run cargo fetch
       cargo fetch &>/dev/null
+      
+      __nix_completions_load

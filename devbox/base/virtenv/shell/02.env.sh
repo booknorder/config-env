@@ -99,7 +99,7 @@ function __nix_completions_load() {
   for file in "$REPO_ROOT"/.devbox/nix/profile/default/share/bash-completion/completions/*; do
     if [ -r "$file" ]; then
       log_step_sub "$(basename "$file")"
-      source "$file"
+      source "$file" || true
     fi
   done
 }

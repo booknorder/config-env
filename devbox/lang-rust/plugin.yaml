@@ -32,4 +32,5 @@ shell:
       log_step_sub "Run cargo fetch
       cargo fetch &>/dev/null
       
-      __nix_completions_load
+      # log_step_sub "Load completions"
+      # source "$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo"

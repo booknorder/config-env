@@ -96,10 +96,18 @@ function __nix_env_fix() {
 }
 
 function __nix_completions_load() {
+  local
+  local filename
+
   for file in "$REPO_ROOT"/.devbox/nix/profile/default/share/bash-completion/completions/*; do
     if [ -r "$file" ]; then
-      log_step_sub "$(basename "$file")"
-      source "$file" || true
+      filename="$(basename "$file")"
+      log_step_sub "$filename"
+      source "$file"
+      # cargo needs to be loaded only after rust installed (manually)
+      # if [[ "$filename" != "cargo" ]]; then
+      #   source "$file"
+      # fi
     fi
   done
 }

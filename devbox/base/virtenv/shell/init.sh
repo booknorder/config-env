@@ -136,7 +136,7 @@ function __repo_init_env_nix() {
 }
 
 function __repo_init_helm() {
-  if [[ "${_SOURCED}" == "1" && "${REPO_HELM_PLUGINS_INSTALL-0}" == "1" ]]; then
+  if [[ "${REPO_HELM_PLUGINS_INSTALL-0}" == "1" ]]; then
     log_step "Helm: Install Plugins"
 
     log_step_sub "Ensure: s3 ➜ $HELM_PLUGIN_S3_VERSION"

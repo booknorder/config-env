@@ -1,5 +1,5 @@
 name: tag-release
-run-name: "Release -> ${{ github.event.head_commit.message }}"
+run-name: "Release ➜ ${{ github.event.head_commit.message }}"
 
 permissions:
   contents: write

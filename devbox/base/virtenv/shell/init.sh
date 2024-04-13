@@ -138,23 +138,23 @@ function __repo_init_env_nix() {
 function __repo_init_helm() {
   log_step "Helm: Install Plugins"
 
-  log_step_sub "Ensure: s3 -> $HELM_PLUGIN_S3_VERSION"
+  log_step_sub "Ensure: s3 ➜ $HELM_PLUGIN_S3_VERSION"
   __helm_plugin_ensure "s3" "$HELM_PLUGIN_S3_VERSION" "https://github.com/hypnoglow/helm-s3.git"
 
-  log_step_sub "Ensure: diff -> $HELM_PLUGIN_DIFF_VERSION"
+  log_step_sub "Ensure: diff ➜ $HELM_PLUGIN_DIFF_VERSION"
   __helm_plugin_ensure "diff" "$HELM_PLUGIN_DIFF_VERSION" "https://github.com/databus23/helm-diff"
 
-  log_step_sub "Ensure: secrets -> $HELM_PLUGIN_SECRETS_VERSION"
+  log_step_sub "Ensure: secrets ➜ $HELM_PLUGIN_SECRETS_VERSION"
   __helm_plugin_ensure "secrets" "$HELM_PLUGIN_SECRETS_VERSION" "https://github.com/jkroepke/helm-secrets"
 
-  log_step_sub "Ensure: helm-git -> $HELM_PLUGIN_GIT_VERSION"
+  log_step_sub "Ensure: helm-git ➜ $HELM_PLUGIN_GIT_VERSION"
   __helm_plugin_ensure "helm-git" "$HELM_PLUGIN_GIT_VERSION" "https://github.com/aslafy-z/helm-git"
 
-  log_step_sub "Ensure: mapkubeapis -> $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
+  log_step_sub "Ensure: mapkubeapis ➜ $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
   __helm_plugin_ensure "mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION" "https://github.com/helm/helm-mapkubeapis"
 
   if [[ "$CI" != "true" ]]; then
-    log_step_sub "Ensure: dashboard -> $HELM_PLUGIN_DASHBOARD_VERSION"
+    log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
     __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
   fi
 }

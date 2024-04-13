@@ -8,6 +8,7 @@ create_files: {}
 env:
   RUST_VERSION: 1.77.2
   RUSTUP_HOME: $PWD/.devbox/runtimes/rust
+  LIBRARY_PATH: $LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib
 
 packages:
   libiconv:
@@ -23,9 +24,9 @@ shell:
       echo "  Initializing Devbox: Rust"
       echo "   ➜ RUST_VERSION: $RUST_VERSION"
       echo "   ➜ RUSTUP_HOME: $RUSTUP_HOME"
+      echo "   ➜ LIBRARY_PATH: $LIBRARY_PATH"
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
-      export LIBRARY_PATH="$LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib"
       mkdir -p "$RUSTUP_HOME"
       
       echo " ➜ Install rust toolchain"

@@ -4,14 +4,17 @@ description: Setup runtime Node.js
 readme: README.md
 include: []
 create_files: {}
+
 env:
   NODE_VERSION: 20.11.1
   PNPM_VERSION: 8.15.5
+
 packages:
   nodejs:
     version: 20.11.1
   nodePackages.pnpm:
     version: 8.15.5
+
 shell:
   scripts: {}
   init_hook: []

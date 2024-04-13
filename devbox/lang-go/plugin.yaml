@@ -20,13 +20,19 @@ shell:
   scripts: {}
   init_hook:
     - |
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-      echo "  Initializing Devbox: Go"
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      function __log_echo() {
+        if [[ "${REPO_SCRIPT_DEBUG-1}" == "1" ]]; then
+          echo "$1"
+        fi
+      }
       
-      echo " ➜ GOPATH: $GOPATH"
-      echo " ➜ GO_VERSION: $(go version)"
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      __log_echo "  Initializing Devbox: Go"
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
-      echo " ➜ Create GOPATH directory"
+      __log_echo " ➜ GOPATH: $GOPATH"
+      __log_echo " ➜ GO_VERSION: $(go version)"
+      
+      __log_echo " ➜ Create GOPATH directory"
       mkdir -p "$GOPATH"
       mkdir -p "$GOPATH/bin"

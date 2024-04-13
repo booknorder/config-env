@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-node",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Setup runtime Node.js",
   "readme": "README.md",
   "include": [],
@@ -26,7 +26,7 @@
     "scripts": {},
     "init_hook":
     [
-      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Node.js\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n\necho \" ➜ NODE_VERSION: $(node -v)\"\necho \" ➜ PNPM_VERSION: $(pnpm -v)\"\n"
+      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Node.js\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n\n__log_echo \" ➜ NODE_VERSION: $(node -v)\"\n__log_echo \" ➜ PNPM_VERSION: $(pnpm -v)\"\n"
     ]
   }
 }

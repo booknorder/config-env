@@ -20,21 +20,26 @@ shell:
   scripts: {}
   init_hook:
     - |
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-      echo "  Initializing Devbox: Rust"
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      function __log_echo() {
+        if [[ "${REPO_SCRIPT_DEBUG-1}" == "1" ]]; then
+          echo "$1"
+        fi
+      }
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      __log_echo "  Initializing Devbox: Rust"
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
-      echo " ➜ RUST_VERSION: $RUST_VERSION"
-      echo " ➜ RUSTUP_HOME: $RUSTUP_HOME"
-      echo " ➜ LIBRARY_PATH: $LIBRARY_PATH"
+      __log_echo " ➜ RUST_VERSION: $RUST_VERSION"
+      __log_echo " ➜ RUSTUP_HOME: $RUSTUP_HOME"
+      __log_echo " ➜ LIBRARY_PATH: $LIBRARY_PATH"
       
-      echo " ➜ Create home directory"
+      __log_echo " ➜ Create home directory"
       mkdir -p "$RUSTUP_HOME"
       
-      echo " ➜ Install rust toolchain"
+      __log_echo " ➜ Install rust toolchain"
       rustup default "$RUST_VERSION" # stable
       
-      echo " ➜ Run cargo fetch"
+      __log_echo " ➜ Run cargo fetch"
       cargo fetch &>/dev/null
       
       # log_step_sub "Load completions"

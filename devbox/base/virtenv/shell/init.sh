@@ -172,8 +172,12 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 function time_func() {
   local func=$1 # Capture the function name
-  TIMEFORMAT=" ➜ ⌚ $func: %Rs"
-  time $func # Execute the function
+  if [[ "${REPO_SCRIPT_DEBUG-1}" == "1" ]]; then
+    TIMEFORMAT=" ➜ ⌚ $func: %Rs"
+    time $func # Execute the function
+  else
+    $func # Execute the function
+  fi
 }
 
 #>- Execute Functions (order matters)

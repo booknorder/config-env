@@ -19,11 +19,16 @@ shell:
   scripts: {}
   init_hook:
     - |
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-      echo "  Initializing Devbox: Node.js"
-      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      function __log_echo() {
+        if [[ "${REPO_SCRIPT_DEBUG-1}" == "1" ]]; then
+          echo "$1"
+        fi
+      }
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      __log_echo "  Initializing Devbox: Node.js"
+      __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
       
-      echo " ➜ NODE_VERSION: $(node -v)"
-      echo " ➜ PNPM_VERSION: $(pnpm -v)"
+      __log_echo " ➜ NODE_VERSION: $(node -v)"
+      __log_echo " ➜ PNPM_VERSION: $(pnpm -v)"
 

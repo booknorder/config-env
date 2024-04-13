@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-go",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],
@@ -27,7 +27,7 @@
     "scripts": {},
     "init_hook":
     [
-      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Go\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\necho \" ➜ GOPATH: $GOPATH\"\necho \" ➜ GO_VERSION: $(go version)\"\n\necho \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
+      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Go\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n__log_echo \" ➜ GOPATH: $GOPATH\"\n__log_echo \" ➜ GO_VERSION: $(go version)\"\n\n__log_echo \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
     ]
   }
 }

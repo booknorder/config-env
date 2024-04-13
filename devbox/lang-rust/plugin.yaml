@@ -37,7 +37,7 @@ shell:
       mkdir -p "$RUSTUP_HOME"
       
       __log_echo " ➜ Install rust toolchain"
-      rustup default "$RUST_VERSION" # stable
+      rustup default "$RUST_VERSION" 1>/dev/null # stable
       
       __log_echo " ➜ Run cargo fetch"
       cargo fetch &>/dev/null

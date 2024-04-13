@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+dir=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+
+#>- We define `root` again, as script might run outside `devbox shell`
+# root="$(dirname "$(dirname "$dir")")"
+# export REPO_ROOT="${root}"
+
+"$dir/devbox-run" task "${@}"

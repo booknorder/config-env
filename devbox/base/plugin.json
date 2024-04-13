@@ -1,0 +1,103 @@
+{
+  "name": "bno",
+  "version":
+  {
+    "name": "@booknorder/config-env",
+    "version": "0.1.0",
+    "scripts": {},
+    "devDependencies":
+    {
+      "lefthook": "1.6.10"
+    }
+  },
+  "description": "Setup Shell/Devbox environment consistently across all projects",
+  "readme": "README.md",
+  "include": [],
+  "packages":
+  {
+    "curl":
+    {
+      "version": "latest"
+    },
+    "git":
+    {
+      "version": "latest"
+    },
+    "go-task":
+    {
+      "version": "3.35.1"
+    },
+    "gomplate":
+    {
+      "version": "3.11.7"
+    },
+    "helmfile":
+    {
+      "version": "0.162"
+    },
+    "jq":
+    {
+      "version": "latest"
+    },
+    "k3d":
+    {
+      "version": "5.6.0"
+    },
+    "krew":
+    {
+      "version": "latest"
+    },
+    "kubectl":
+    {
+      "version": "1.29"
+    },
+    "kubectx":
+    {
+      "version": "latest"
+    },
+    "kubernetes-helm":
+    {
+      "version": "3.14.3"
+    },
+    "netcat-gnu":
+    {
+      "version": "latest"
+    },
+    "nushell":
+    {
+      "version": "latest"
+    },
+    "stern":
+    {
+      "version": "latest"
+    },
+    "wget":
+    {
+      "version": "latest"
+    }
+  },
+  "create_files":
+  {
+    "{{ .Virtenv }}/bin/devbox-run": "virtenv/bin/devbox-run",
+    "{{ .Virtenv }}/bin/devbox-task": "virtenv/bin/devbox-task",
+    "{{ .Virtenv }}/bin/helm-plugin-ensure.nu": "virtenv/bin/helm-plugin-ensure.nu",
+    "{{ .Virtenv }}/shell/00.ansi.sh": "virtenv/shell/00.ansi.sh",
+    "{{ .Virtenv }}/shell/01.base.sh": "virtenv/shell/01.base.sh",
+    "{{ .Virtenv }}/shell/02.env.sh": "virtenv/shell/02.env.sh",
+    "{{ .Virtenv }}/shell/03.ssh.sh": "virtenv/shell/03.ssh.sh",
+    "{{ .Virtenv }}/shell/init.sh": "virtenv/shell/init.sh",
+    "{{ .Virtenv }}/templates/gitignore": "virtenv/templates/gitignore"
+  },
+  "env":
+  {
+    "REPO_DEVBOX_VIRTENV_DIR": "{{ .Virtenv }}"
+  },
+  "shell":
+  {
+    "scripts": {},
+    "init_hook":
+    [
+      "export HELM_PLUGIN_S3_VERSION=\"${HELM_PLUGIN_S3_VERSION-0.16.0}\"\nexport HELM_PLUGIN_DIFF_VERSION=\"${HELM_PLUGIN_DIFF_VERSION-3.9.5}\"\nexport HELM_PLUGIN_DASHBOARD_VERSION=\"${HELM_PLUGIN_DASHBOARD_VERSION-1.3.3}\"\nexport HELM_PLUGIN_SECRETS_VERSION=\"${HELM_PLUGIN_SECRETS_VERSION-4.6.0}\"\nexport HELM_PLUGIN_GIT_VERSION=\"${HELM_PLUGIN_GIT_VERSION-0.15.1}\"\nexport HELM_PLUGIN_MAPKUBEAPIS_VERSION=\"${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}\"\n\n# Load shell source\nsource {{ .Virtenv }}/shell/init.sh\n\n# Create .gitignore file if not exists\nif [ ! -f \"$REPO_ROOT/.gitignore\" ]; then\n  log_msg \"Create .gitignore template\"\n  cp \"{{ .Virtenv }}/templates/gitignore\" \"$REPO_ROOT/.gitignore\"\nfi\n"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "bno-lang-rust",
+  "version":
+  {
+    "name": "@booknorder/config-env",
+    "version": "0.1.0",
+    "scripts": {},
+    "devDependencies":
+    {
+      "lefthook": "1.6.10"
+    }
+  },
+  "description": "Setup runtime Rust",
+  "readme": "README.md",
+  "include": [],
+  "create_files": {},
+  "env":
+  {
+    "RUST_VERSION": "1.77.2"
+  },
+  "packages":
+  {
+    "libiconv":
+    {
+      "version": "latest"
+    },
+    "rustup":
+    {
+      "version": "latest"
+    }
+  },
+  "shell":
+  {
+    "scripts": {},
+    "init_hook":
+    [
+      "export RUSTUP_HOME=\"$REPO_ROOT/.devbox/runtimes/rustup\"\nexport LIBRARY_PATH=\"$LIBRARY_PATH:\"$REPO_ROOT/.devbox/nix/profile/default/lib\"\nmkdir -p \"$RUSTUP_HOME\"\nrustup default \"$RUST_VERSION\"\n# rustup default stable\ncargo fetch &>/dev/null\n"
+    ]
+  }
+}

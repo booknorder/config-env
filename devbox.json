@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.4/.schema/devbox.schema.json",
+  "packages": [
+    "curl@latest",
+    "git@latest",
+    "go-task@3.35.1",
+    "gomplate@3.11.7",
+    "jq@latest",
+    "netcat-gnu@0.7.1",
+    "nushell@latest",
+    "wget@latest"
+  ],
+  "shell": {
+    "scripts": {},
+    "init_hook": [
+      "export REPO_ROOT=\"$(pwd)\"",
+      "npm install"
+    ]
+  }
+}

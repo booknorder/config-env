@@ -1,0 +1,86 @@
+version: "3"
+set: ["e", "u", "pipefail"]
+
+env: {}
+vars:
+  REPO_ROOT: "{{.TASKFILE_DIR}}"
+
+tasks:
+  test: echo "{{.REPO_ROOT}}"
+
+  lefthook: npm exec lefthook {{.CLI_ARGS | default "install"}}
+
+  lefthook:post-commit:
+    silent: true
+    cmd: |
+      echo "DateTime: $(date)"
+      MSG="$(git log -1 --pretty=format:%s)"
+      
+      if ! echo "$MSG" | grep -E "^(major|minor|patch):"; then
+        exit 0
+      fi
+      
+      if [[ "$MSG" == major:* ]]; then
+        npm version major --no-commit-hooks --no-git-tag-version
+      elif [[ "$MSG" == minor:* ]]; then
+        npm version minor --no-commit-hooks --no-git-tag-version
+      elif [[ "$MSG" == patch:* ]]; then
+        npm version patch --no-commit-hooks --no-git-tag-version
+      fi
+      
+      task devbox:build --force
+      git add -A .
+      
+      TAGS="$(git tag --sort=version:refname)"
+      VERSION="v$(nu -c 'open package.json | get version')"
+      MSG="(${VERSION}) ${MSG}"
+      
+      git commit --amend -m "${MSG}"
+      
+      if echo "$TAGS" | grep -q "${VERSION}"; then
+        echo "Tag: Already exists -> ${VERSION}"
+      else
+        echo "Tag: Create -> ${VERSION}"
+        git tag -a "${VERSION}" -m "${MSG}"
+        # git push origin main --follow-tags
+      fi
+  
+
+  devbox:watch: task devbox:build --watch --interval=500ms
+
+  devbox:build:
+    sources:
+      - "{{.REPO_ROOT}}/package.json"
+      - "{{.REPO_ROOT}}/devbox/*/plugin.yaml"
+      - "{{.REPO_ROOT}}/devbox/*/virtenv/**/*"
+    cmds:
+      - task: devbox:plugin:base
+      - task: devbox:plugin:lang-go
+      - task: devbox:plugin:lang-node
+      - task: devbox:plugin:lang-rust
+
+  devbox:plugin:base:
+    cmd:
+      task: devbox:plugin:build
+      vars: {DIR: "base"}
+
+  devbox:plugin:lang-go:
+    cmd:
+      task: devbox:plugin:build
+      vars: {DIR: "lang-go"}
+
+  devbox:plugin:lang-node:
+    cmd:
+      task: devbox:plugin:build
+      vars: {DIR: "lang-node"}
+
+  devbox:plugin:lang-rust:
+    cmd:
+      task: devbox:plugin:build
+      vars: {DIR: "lang-rust"}
+
+  devbox:plugin:build:
+    cmd: nu "{{.REPO_ROOT}}/scripts/devbox.nu" --dir='{{.SRC}}'
+    requires: {vars: [DIR]}
+    vars: {SRC: "{{.REPO_ROOT}}/devbox/{{.DIR}}"}
+

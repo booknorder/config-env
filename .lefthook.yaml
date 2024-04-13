@@ -1,0 +1,11 @@
+# echo "(v${VERSION}) ${MSG}" > {{.COMMIT_MSG_FILE}}
+# echo {0} {1} {2} {3}
+
+post-commit:
+  commands:
+    tag:
+      run: devbox run -- task lefthook:post-commit
+      skip:
+        - run: |
+            MSG="$(git log -1 --pretty=format:%s)"
+            echo "$MSG" | grep -q "^(v" && exit 0 || exit 1

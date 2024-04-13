@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+export REPO_DEVBOX_RUN="1"
+
+if [[ "$DEVBOX_SHELL_ENABLED" == "1" ]]; then
+  echo "[devbox:run] Already in Devbox shell, running command..."
+  echo "[devbox:run] $*"
+  "${@}"
+else
+  echo "[devbox:run] Running command with 'devbox run ...'"
+  echo "[devbox:run] $*"
+  devbox run -- "${@}"
+fi

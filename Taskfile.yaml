@@ -9,6 +9,8 @@ vars:
 tasks:
   test: echo "{{.REPO_ROOT}}"
 
+  latest: npm pkg get version
+
   lefthook: npm exec lefthook {{.CLI_ARGS | default "install"}}
 
   lefthook:post-commit:

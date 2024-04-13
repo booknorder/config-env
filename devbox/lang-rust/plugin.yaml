@@ -22,11 +22,13 @@ shell:
     - |
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       echo "  Initializing Devbox: Rust"
-      echo "   ➜ RUST_VERSION: $RUST_VERSION"
-      echo "   ➜ RUSTUP_HOME: $RUSTUP_HOME"
-      echo "   ➜ LIBRARY_PATH: $LIBRARY_PATH"
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
+      echo " ➜ RUST_VERSION: $RUST_VERSION"
+      echo " ➜ RUSTUP_HOME: $RUSTUP_HOME"
+      echo " ➜ LIBRARY_PATH: $LIBRARY_PATH"
+      
+      echo " ➜ Create home directory"
       mkdir -p "$RUSTUP_HOME"
       
       echo " ➜ Install rust toolchain"

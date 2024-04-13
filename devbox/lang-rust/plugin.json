@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-rust",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "description": "Setup runtime Rust",
   "readme": "README.md",
   "include": [],
@@ -27,7 +27,7 @@
     "scripts": {},
     "init_hook":
     [
-      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Rust\"\necho \"   ➜ RUST_VERSION: $RUST_VERSION\"\necho \"   ➜ RUSTUP_HOME: $RUSTUP_HOME\"\necho \"   ➜ LIBRARY_PATH: $LIBRARY_PATH\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\nmkdir -p \"$RUSTUP_HOME\"\n\necho \" ➜ Install rust toolchain\"\nrustup default \"$RUST_VERSION\" # stable\n\necho \" ➜ Run cargo fetch\"\ncargo fetch &>/dev/null\n\n# log_step_sub \"Load completions\"\n# source \"$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo\"\n"
+      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Rust\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\necho \" ➜ RUST_VERSION: $RUST_VERSION\"\necho \" ➜ RUSTUP_HOME: $RUSTUP_HOME\"\necho \" ➜ LIBRARY_PATH: $LIBRARY_PATH\"\n\necho \" ➜ Create home directory\"\nmkdir -p \"$RUSTUP_HOME\"\n\necho \" ➜ Install rust toolchain\"\nrustup default \"$RUST_VERSION\" # stable\n\necho \" ➜ Run cargo fetch\"\ncargo fetch &>/dev/null\n\n# log_step_sub \"Load completions\"\n# source \"$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo\"\n"
     ]
   }
 }

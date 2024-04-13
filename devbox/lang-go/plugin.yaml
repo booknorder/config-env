@@ -18,4 +18,15 @@ packages:
 
 shell:
   scripts: {}
-  init_hook: []
+  init_hook:
+    - |
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo "  Initializing Devbox: Go"
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      
+      echo " ➜ GO_VERSION: $GO_VERSION"
+      echo " ➜ GOPATH: $GOPATH"
+      
+      echo " ➜ Create GOPATH directory"
+      mkdir -p "$GOPATH"
+      mkdir -p "$GOPATH/bin"

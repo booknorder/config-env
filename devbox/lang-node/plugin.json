@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-node",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "description": "Setup runtime Node.js",
   "readme": "README.md",
   "include": [],
@@ -24,6 +24,9 @@
   "shell":
   {
     "scripts": {},
-    "init_hook": []
+    "init_hook":
+    [
+      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Node.js\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n\necho \" ➜ NODE_VERSION: $(node -v)\"\necho \" ➜ PNPM_VERSION: $(pnpm -v)\"\n"
+    ]
   }
 }

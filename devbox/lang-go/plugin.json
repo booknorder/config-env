@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-go",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],
@@ -25,6 +25,9 @@
   "shell":
   {
     "scripts": {},
-    "init_hook": []
+    "init_hook":
+    [
+      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Go\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\necho \" ➜ GO_VERSION: $GO_VERSION\"\necho \" ➜ GOPATH: $GOPATH\"\n\necho \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
+    ]
   }
 }

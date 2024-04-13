@@ -17,4 +17,13 @@ packages:
 
 shell:
   scripts: {}
-  init_hook: []
+  init_hook:
+    - |
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo "  Initializing Devbox: Node.js"
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      
+      
+      echo " ➜ NODE_VERSION: $(node -v)"
+      echo " ➜ PNPM_VERSION: $(pnpm -v)"
+

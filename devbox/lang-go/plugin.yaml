@@ -24,8 +24,8 @@ shell:
       echo "  Initializing Devbox: Go"
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
-      echo " ➜ GO_VERSION: $GO_VERSION"
       echo " ➜ GOPATH: $GOPATH"
+      echo " ➜ GO_VERSION: $(go version)"
       
       echo " ➜ Create GOPATH directory"
       mkdir -p "$GOPATH"

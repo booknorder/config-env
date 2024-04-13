@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-go",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],
@@ -27,7 +27,7 @@
     "scripts": {},
     "init_hook":
     [
-      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Go\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\necho \" ➜ GO_VERSION: $GO_VERSION\"\necho \" ➜ GOPATH: $GOPATH\"\n\necho \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
+      "echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\necho \"  Initializing Devbox: Go\"\necho \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\necho \" ➜ GOPATH: $GOPATH\"\necho \" ➜ GO_VERSION: $(go version)\"\n\necho \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
     ]
   }
 }

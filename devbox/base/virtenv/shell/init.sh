@@ -136,26 +136,28 @@ function __repo_init_env_nix() {
 }
 
 function __repo_init_helm() {
-  log_step "Helm: Install Plugins"
+  if [[ "${_SOURCED}" == "1" && "${REPO_HELM_PLUGINS_INSTALL-0}" == "1" ]]; then
+    log_step "Helm: Install Plugins"
 
-  log_step_sub "Ensure: s3 ➜ $HELM_PLUGIN_S3_VERSION"
-  __helm_plugin_ensure "s3" "$HELM_PLUGIN_S3_VERSION" "https://github.com/hypnoglow/helm-s3.git"
+    log_step_sub "Ensure: s3 ➜ $HELM_PLUGIN_S3_VERSION"
+    __helm_plugin_ensure "s3" "$HELM_PLUGIN_S3_VERSION" "https://github.com/hypnoglow/helm-s3.git"
 
-  log_step_sub "Ensure: diff ➜ $HELM_PLUGIN_DIFF_VERSION"
-  __helm_plugin_ensure "diff" "$HELM_PLUGIN_DIFF_VERSION" "https://github.com/databus23/helm-diff"
+    log_step_sub "Ensure: diff ➜ $HELM_PLUGIN_DIFF_VERSION"
+    __helm_plugin_ensure "diff" "$HELM_PLUGIN_DIFF_VERSION" "https://github.com/databus23/helm-diff"
 
-  log_step_sub "Ensure: secrets ➜ $HELM_PLUGIN_SECRETS_VERSION"
-  __helm_plugin_ensure "secrets" "$HELM_PLUGIN_SECRETS_VERSION" "https://github.com/jkroepke/helm-secrets"
+    log_step_sub "Ensure: secrets ➜ $HELM_PLUGIN_SECRETS_VERSION"
+    __helm_plugin_ensure "secrets" "$HELM_PLUGIN_SECRETS_VERSION" "https://github.com/jkroepke/helm-secrets"
 
-  log_step_sub "Ensure: helm-git ➜ $HELM_PLUGIN_GIT_VERSION"
-  __helm_plugin_ensure "helm-git" "$HELM_PLUGIN_GIT_VERSION" "https://github.com/aslafy-z/helm-git"
+    log_step_sub "Ensure: helm-git ➜ $HELM_PLUGIN_GIT_VERSION"
+    __helm_plugin_ensure "helm-git" "$HELM_PLUGIN_GIT_VERSION" "https://github.com/aslafy-z/helm-git"
 
-  log_step_sub "Ensure: mapkubeapis ➜ $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
-  __helm_plugin_ensure "mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION" "https://github.com/helm/helm-mapkubeapis"
+    log_step_sub "Ensure: mapkubeapis ➜ $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
+    __helm_plugin_ensure "mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION" "https://github.com/helm/helm-mapkubeapis"
 
-  if [[ "$CI" != "true" ]]; then
-    log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
-    __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
+    if [[ "$CI" != "true" ]]; then
+      log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
+      __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
+    fi
   fi
 }
 
@@ -170,7 +172,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 function time_func() {
   local func=$1 # Capture the function name
-  TIMEFORMAT=" ➜ time ($func): %Rs"
+  TIMEFORMAT=" ➜ ⌚ $func: %Rs"
   time $func # Execute the function
 }
 
@@ -179,9 +181,7 @@ time_func __repo_init_defaults
 time_func __repo_init_sources
 time_func __repo_init_env
 time_func __repo_init_env_nix
-if [[ "${REPO_HELM_PLUGINS_INSTALL-0}" == "1" ]]; then
-  time_func __repo_init_helm
-fi
+time_func __repo_init_helm
 
 #>>-------------------------------------------------------------------------
 #>>-  Run: Cleanup

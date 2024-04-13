@@ -4,8 +4,9 @@ def main [--dir: string] {
     let output = ($dir | path join "plugin.json")
 
     let plugin = (open $input | upsert version $version)
-    $plugin | to yaml | save --force $input
     $plugin | to json | save --force $output
+
+    # $plugin | to yaml | save --force $input
 }
 
 ####

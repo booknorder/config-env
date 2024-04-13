@@ -1,6 +1,6 @@
 {
   "name": "bno",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Setup Shell/Devbox environment consistently across all projects",
   "readme": "README.md",
   "include": [],
@@ -88,7 +88,7 @@
     "scripts": {},
     "init_hook":
     [
-      "export HELM_PLUGIN_S3_VERSION=\"${HELM_PLUGIN_S3_VERSION-0.16.0}\"\nexport HELM_PLUGIN_DIFF_VERSION=\"${HELM_PLUGIN_DIFF_VERSION-3.9.5}\"\nexport HELM_PLUGIN_DASHBOARD_VERSION=\"${HELM_PLUGIN_DASHBOARD_VERSION-1.3.3}\"\nexport HELM_PLUGIN_SECRETS_VERSION=\"${HELM_PLUGIN_SECRETS_VERSION-4.6.0}\"\nexport HELM_PLUGIN_GIT_VERSION=\"${HELM_PLUGIN_GIT_VERSION-0.15.1}\"\nexport HELM_PLUGIN_MAPKUBEAPIS_VERSION=\"${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}\"\n\n# Load shell source\nsource {{ .Virtenv }}/shell/init.sh\n\n# Create .gitignore file if not exists\nif [ ! -f \"$REPO_ROOT/.gitignore\" ]; then\n  log_msg \"Create .gitignore template\"\n  cp \"{{ .Virtenv }}/templates/gitignore\" \"$REPO_ROOT/.gitignore\"\nfi\n"
+      "export HELM_PLUGIN_S3_VERSION=\"${HELM_PLUGIN_S3_VERSION-0.16.0}\"\nexport HELM_PLUGIN_DIFF_VERSION=\"${HELM_PLUGIN_DIFF_VERSION-3.9.5}\"\nexport HELM_PLUGIN_DASHBOARD_VERSION=\"${HELM_PLUGIN_DASHBOARD_VERSION-1.3.2}\"\nexport HELM_PLUGIN_SECRETS_VERSION=\"${HELM_PLUGIN_SECRETS_VERSION-4.6.0}\"\nexport HELM_PLUGIN_GIT_VERSION=\"${HELM_PLUGIN_GIT_VERSION-0.15.1}\"\nexport HELM_PLUGIN_MAPKUBEAPIS_VERSION=\"${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}\"\n\n# Load shell source\nsource {{ .Virtenv }}/shell/init.sh\n\n# Create .gitignore file if not exists\nif [ ! -f \"$REPO_ROOT/.gitignore\" ]; then\n  log_msg \"Create .gitignore template\"\n  cp \"{{ .Virtenv }}/templates/gitignore\" \"$REPO_ROOT/.gitignore\"\nfi\n"
     ]
   }
 }

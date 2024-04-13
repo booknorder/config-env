@@ -19,6 +19,7 @@ shell:
   init_hook:
     - |
       log_step "Setup Rust"
+      echo "Setup Rust: $RUST_VERSION"
       
       export RUSTUP_HOME="$REPO_ROOT/.devbox/runtimes/rust"
       export LIBRARY_PATH="$LIBRARY_PATH:"$REPO_ROOT/.devbox/nix/profile/default/lib"

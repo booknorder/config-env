@@ -16,8 +16,6 @@ packages:
     version: '0.162'
   jq:
     version: latest
-  k3d:
-    version: 5.6.0
   krew:
     version: latest
   kubectl:

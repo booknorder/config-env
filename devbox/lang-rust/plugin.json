@@ -1,13 +1,12 @@
 {
   "name": "bno-lang-rust",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Setup runtime Rust",
   "readme": "README.md",
   "include": [],
   "create_files": {},
   "env":
   {
-    "RUST_VERSION": "1.77.2",
     "RUSTUP_HOME": "$PWD/.devbox/runtimes/rust",
     "LIBRARY_PATH": "$LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib"
   },
@@ -27,7 +26,7 @@
     "scripts": {},
     "init_hook":
     [
-      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Rust\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n__log_echo \" ➜ RUST_VERSION: $RUST_VERSION\"\n__log_echo \" ➜ RUSTUP_HOME: $RUSTUP_HOME\"\n__log_echo \" ➜ LIBRARY_PATH: $LIBRARY_PATH\"\n\n__log_echo \" ➜ Create home directory\"\nmkdir -p \"$RUSTUP_HOME\"\n\n__log_echo \" ➜ Install rust toolchain\"\nrustup default \"$RUST_VERSION\" 1>/dev/null # stable\n\n__log_echo \" ➜ Run cargo fetch\"\ncargo fetch &>/dev/null\n\n# log_step_sub \"Load completions\"\n# source \"$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo\"\n"
+      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Rust\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n# __log_echo \" ➜ RUST_VERSION: $RUST_VERSION\"\n__log_echo \" ➜ RUSTUP_HOME: $RUSTUP_HOME\"\n__log_echo \" ➜ LIBRARY_PATH: $LIBRARY_PATH\"\n\n__log_echo \" ➜ Create home directory\"\nmkdir -p \"$RUSTUP_HOME\"\n\n__log_echo \" ➜ Install rust toolchain\"\n# rustup default \"$RUST_VERSION\" 1>/dev/null # stable\nrustup default stable\nrustup component add clippy\nrustup component add rust-src\n\n__log_echo \" ➜ Run cargo fetch\"\ncargo fetch &>/dev/null\n\n__log_echo \" ➜ Details\"\nrustup show\n\n# log_step_sub \"Load completions\"\n# source \"$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo\"\n"
     ]
   }
 }

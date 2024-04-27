@@ -53,7 +53,7 @@
               aarch64-darwin = {
                 hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
                 name = "darwin_arm64";
-                ext = "";
+                ext = ".tar.gz";
               };
               x86_64-darwin = {
                 hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";

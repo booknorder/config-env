@@ -38,6 +38,7 @@ shell:
       
       __log_echo " ➜ Install rust toolchain"
       # rustup default "$RUST_VERSION" 1>/dev/null # stable
+      rustup toolchain install nightly
       rustup default stable
       rustup component add clippy
       rustup component add rust-src

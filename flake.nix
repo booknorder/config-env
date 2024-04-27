@@ -22,6 +22,11 @@
             version = "v2.38.0";
             tag = "v2.38.0";
             archMap = {
+              aarch64-darwin = {
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                name = "darwin-arm64";
+                ext = "";
+              };
               x86_64-darwin = {
                 hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
                 name = "darwin-amd64";
@@ -45,6 +50,11 @@
             version = "v0.17.5";
             tag = "v0.17.5";
             archMap = {
+              aarch64-darwin = {
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                name = "darwin_arm64";
+                ext = "";
+              };
               x86_64-darwin = {
                 hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
                 name = "darwin_amd64";

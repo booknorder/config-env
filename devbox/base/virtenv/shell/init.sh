@@ -71,7 +71,8 @@ function __repo_init_defaults() {
 
   #>- Vendor
   export HELM_PLUGINS="$REPO_ROOT/.devbox/helm/plugins"
-  export CI="${CI-false}"
+  # This can disable certain things such as a terminal colors, simply by being defined
+  # export CI="${CI-false}"
 
 }
 

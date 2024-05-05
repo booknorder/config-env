@@ -29,7 +29,7 @@ function __dotenv_load() {
   local file="$1"
   if [[ -f "$1" ]]; then
     set -a && source "$file" && set +a
-    # if [[ "$CI" = "true" ]]; then
+    # if [[ "${CI-false}" = "true" ]]; then
     #   cat "$file" | xargs -0 -I {} echo {} >>"$GITHUB_ENV"
     # fi
     log_step_sub "Loaded: $file"

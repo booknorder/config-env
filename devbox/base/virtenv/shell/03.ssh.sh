@@ -10,7 +10,7 @@
 #-➤ REPO_ROOT
 
 #>>- Skip if CI environment
-if [ "$CI" != "true" ]; then
+if [ "${CI-false}" != "true" ]; then
   #@ Adjust shell options as starting ssh may fail
   set +e
 

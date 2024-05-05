@@ -126,7 +126,7 @@ function __repo_init_env() {
 
 function __repo_init_env_nix() {
   #>- Load completions
-  if [[ "${_SOURCED}" == "1" && "$REPO_DEVBOX_RUN" == "0" && "$CI" != "true" ]]; then
+  if [[ "${_SOURCED}" == "1" && "$REPO_DEVBOX_RUN" == "0" && "${CI-false}" != "true" ]]; then
     log_step "Load completions"
     __nix_completions_load
   fi
@@ -155,7 +155,7 @@ function __repo_init_helm() {
     log_step_sub "Ensure: mapkubeapis ➜ $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
     __helm_plugin_ensure "mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION" "https://github.com/helm/helm-mapkubeapis"
 
-    if [[ "$CI" != "true" ]]; then
+    if [[ "${CI-false}" != "true" ]]; then
       log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
       __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
     fi

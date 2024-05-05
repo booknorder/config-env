@@ -6,6 +6,8 @@ include: []
 packages:
   curl:
     version: latest
+  fd:
+    version: latest
   git:
     version: latest
   go-task:

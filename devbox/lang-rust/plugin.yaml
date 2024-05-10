@@ -6,7 +6,6 @@ include: []
 create_files: {}
 
 env:
-  # RUST_VERSION: 1.77.2
   RUSTUP_HOME: $PWD/.devbox/runtimes/rust
   LIBRARY_PATH: $LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib
 
@@ -29,7 +28,6 @@ shell:
       __log_echo "  Initializing Devbox: Rust"
       __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       
-      # __log_echo " ➜ RUST_VERSION: $RUST_VERSION"
       __log_echo " ➜ RUSTUP_HOME: $RUSTUP_HOME"
       __log_echo " ➜ LIBRARY_PATH: $LIBRARY_PATH"
       
@@ -37,7 +35,7 @@ shell:
       mkdir -p "$RUSTUP_HOME"
       
       __log_echo " ➜ Install rust toolchain"
-      # rustup default "$RUST_VERSION" 1>/dev/null # stable
+      
       rustup toolchain install nightly
       rustup default stable
       rustup component add clippy
@@ -48,6 +46,9 @@ shell:
       
       __log_echo " ➜ Details"
       rustup show
-      
-      # log_step_sub "Load completions"
-      # source "$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo"
+
+# RUST_VERSION: 1.77.2
+# rustup default "$RUST_VERSION" 1>/dev/null # stable
+# __log_echo " ➜ RUST_VERSION: $RUST_VERSION"
+# log_step_sub "Load completions"
+# source "$REPO_ROOT/.devbox/nix/profile/default/share/bash-completion/completions/cargo"

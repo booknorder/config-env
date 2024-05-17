@@ -100,12 +100,6 @@ function __repo_init_perms() {
 }
 
 function __repo_init_env() {
-  if [[ "$REPO_ENV" != "dev" && "$REPO_ENV" != "prod" ]]; then
-    log_step_error "Variable REPO_ENV is not a valid value - ${REPO_ENV}"
-    exit 1
-  fi
-
-  #>- Dotenv: Base
   log_step "Load dotenv files"
   __dotenv_load "$REPO_ROOT/.env.repo"
   __dotenv_load "$REPO_ROOT/.env"
@@ -113,6 +107,16 @@ function __repo_init_env() {
   #>- Dotenv: Development
   #  ➤ Must load `.env.local` to override values from `.env.repo`
   [[ "$REPO_ENV" != "prod" ]] && __dotenv_load "$REPO_ROOT/.env.local"
+}
+
+function __repo_init_env_full() {
+  if [[ "$REPO_ENV" != "dev" && "$REPO_ENV" != "prod" ]]; then
+    log_step_error "Variable REPO_ENV is not a valid value - ${REPO_ENV}"
+    exit 1
+  fi
+
+  #>- Dotenv
+  __repo_init_env
 
   #>- Other
   [[ -z "${PNPM_HOME-}" ]] && export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -188,7 +192,7 @@ function time_func() {
 time_func __repo_init_defaults
 time_func __repo_init_sources
 time_func __repo_init_perms
-time_func __repo_init_env
+time_func __repo_init_env_full
 time_func __repo_init_path
 time_func __repo_init_nix
 time_func __repo_init_helm

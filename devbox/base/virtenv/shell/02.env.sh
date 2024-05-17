@@ -38,7 +38,7 @@ function __dotenv_load() {
   fi
 }
 
-function __dotenv_from_sops() {
+function __dotenv_create_from_sops() {
   #>- Variables
   #- <file_key> - key to extract within the SOPS yaml file
   #- <file_dest> - the output file to write
@@ -125,3 +125,11 @@ function __helm_plugin_ensure() {
     --version="$version" \
     --repo="$repo"
 }
+
+#>>-------------------------------------------
+#>>-  Exports
+#>>-------------------------------------------
+
+export -f __path_add_top
+export -f __dotenv_load
+export -f __dotenv_create_from_sops

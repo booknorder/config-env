@@ -88,12 +88,7 @@ function __repo_init_sources() {
   source "$_DIR_SOURCES/03.ssh.sh"
 }
 
-function __repo_init_env() {
-  if [[ "$REPO_ENV" != "dev" && "$REPO_ENV" != "prod" ]]; then
-    log_step_error "Variable REPO_ENV is not a valid value - ${REPO_ENV}"
-    exit 1
-  fi
-
+function __repo_init_perms() {
   if [[ "${_SOURCED}" == "1" ]]; then
     #>- Set script permissions to executable
     log_step "Set executable permissions on $REPO_DEVBOX_VIRTENV_DIR/shell/*"
@@ -101,6 +96,13 @@ function __repo_init_env() {
 
     log_step "Set executable permissions on $REPO_DEVBOX_VIRTENV_DIR/bin/*"
     __fs_glob_chmod_exec "$REPO_DEVBOX_VIRTENV_DIR/bin"
+  fi
+}
+
+function __repo_init_env() {
+  if [[ "$REPO_ENV" != "dev" && "$REPO_ENV" != "prod" ]]; then
+    log_step_error "Variable REPO_ENV is not a valid value - ${REPO_ENV}"
+    exit 1
   fi
 
   #>- Dotenv: Base
@@ -115,8 +117,9 @@ function __repo_init_env() {
   #>- Other
   [[ -z "${PNPM_HOME-}" ]] && export PNPM_HOME="$HOME/.local/share/pnpm"
   [[ -z "${KREW_ROOT-}" ]] && export KREW_ROOT="$HOME/.krew"
+}
 
-  #>- $PATH
+function __repo_init_path() {
   log_step "Update PATH"
   #  ➤ Must come after dotenv files loaded as some vars depend on it
   [[ -n "${GCLOUD_BIN-}" ]] && __path_add_top "$GCLOUD_BIN"
@@ -124,7 +127,7 @@ function __repo_init_env() {
   __path_add_top "$REPO_DEVBOX_VIRTENV_DIR/bin"
 }
 
-function __repo_init_env_nix() {
+function __repo_init_nix() {
   #>- Load completions
   if [[ "${_SOURCED}" == "1" && "$REPO_DEVBOX_RUN" == "0" && "${CI-false}" != "true" ]]; then
     log_step "Load completions"
@@ -184,8 +187,10 @@ function time_func() {
 #>- Execute Functions (order matters)
 time_func __repo_init_defaults
 time_func __repo_init_sources
+time_func __repo_init_perms
 time_func __repo_init_env
-time_func __repo_init_env_nix
+time_func __repo_init_path
+time_func __repo_init_nix
 time_func __repo_init_helm
 
 #>>-------------------------------------------------------------------------
@@ -193,3 +198,14 @@ time_func __repo_init_helm
 #>>-------------------------------------------------------------------------
 
 __repo_shell_opts_unset
+
+#>>-------------------------------------------------------------------------
+#>>-  Exports
+#>>-------------------------------------------------------------------------
+
+export -f __repo_shell_opts_untrap
+export -f __repo_shell_opts_unset
+export -f __repo_shell_opts_set
+export -f __repo_shell_root_dir
+
+export -f __repo_init_env

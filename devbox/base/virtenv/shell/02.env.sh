@@ -130,6 +130,8 @@ function __helm_plugin_ensure() {
 #>>-  Exports
 #>>-------------------------------------------
 
+export -f __path_print
 export -f __path_add_top
 export -f __dotenv_load
 export -f __dotenv_create_from_sops
+export -f __helm_plugin_ensure

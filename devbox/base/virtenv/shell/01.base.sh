@@ -168,6 +168,8 @@ function __log_test() {
 # __log_test "pre"
 
 #>>- Exports
+export -f __fs_glob_chmod_exec
+export -f __log_echo
 export -f log_divider
 export -f log_header
 export -f log_title

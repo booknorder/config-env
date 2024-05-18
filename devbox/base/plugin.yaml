@@ -11,11 +11,11 @@ packages:
   git:
     version: latest
   go-task:
-    version: 3.35.1
+    version: "3.37"
   gomplate:
     version: 3.11.7
   helmfile:
-    version: '0.162'
+    version: "0.162"
   jq:
     version: latest
   krew:
@@ -25,7 +25,7 @@ packages:
   kubectx:
     version: latest
   kubernetes-helm:
-    version: 3.14.3
+    version: 3.14.4
   netcat-gnu:
     version: latest
   nushell:

@@ -36,16 +36,16 @@ shell:
       
       __log_echo " ➜ Install rust toolchain"
       
-      rustup toolchain install nightly 1> /dev/null
-      rustup default stable 1> /dev/null
-      rustup component add clippy 1> /dev/null
-      rustup component add rust-src 1> /dev/null
+      log_echo "$(rustup toolchain install nightly)"
+      log_echo "$(rustup default stable)"
+      log_echo "$(rustup component add clippy)"
+      log_echo "$(rustup component add rust-src)"
       
       __log_echo " ➜ Run cargo fetch"
       cargo fetch &>/dev/null
       
       __log_echo " ➜ Details"
-      rustup show
+      __log_echo "$(rustup show)"
 
 # RUST_VERSION: 1.77.2
 # rustup default "$RUST_VERSION" 1>/dev/null # stable

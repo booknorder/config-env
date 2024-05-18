@@ -36,10 +36,10 @@ shell:
       
       __log_echo " ➜ Install rust toolchain"
       
-      log_echo "$(rustup toolchain install nightly)"
-      log_echo "$(rustup default stable)"
-      log_echo "$(rustup component add clippy)"
-      log_echo "$(rustup component add rust-src)"
+      __log_echo "$(rustup toolchain install nightly)"
+      __log_echo "$(rustup default stable)"
+      __log_echo "$(rustup component add clippy)"
+      __log_echo "$(rustup component add rust-src)"
       
       __log_echo " ➜ Run cargo fetch"
       cargo fetch &>/dev/null

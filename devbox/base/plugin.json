@@ -1,6 +1,6 @@
 {
   "name": "bno",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Setup Shell/Devbox environment consistently across all projects",
   "readme": "README.md",
   "include": [],

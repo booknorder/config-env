@@ -106,7 +106,9 @@ function __repo_init_env() {
 
   #>- Dotenv: Development
   #  ➤ Must load `.env.local` to override values from `.env.repo`
-  [[ "$REPO_ENV" != "prod" ]] && __dotenv_load "$REPO_ROOT/.env.local"
+  if [[ "$REPO_ENV" != "prod" ]]; then
+     __dotenv_load "$REPO_ROOT/.env.local"
+   fi
 }
 
 function __repo_init_env_full() {

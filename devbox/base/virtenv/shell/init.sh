@@ -107,8 +107,8 @@ function __repo_init_env() {
   #>- Dotenv: Development
   #  ➤ Must load `.env.local` to override values from `.env.repo`
   if [[ "$REPO_ENV" != "prod" ]]; then
-     __dotenv_load "$REPO_ROOT/.env.local"
-   fi
+    __dotenv_load "$REPO_ROOT/.env.local"
+  fi
 }
 
 function __repo_init_env_full() {
@@ -123,6 +123,11 @@ function __repo_init_env_full() {
   #>- Other
   [[ -z "${PNPM_HOME-}" ]] && export PNPM_HOME="$HOME/.local/share/pnpm"
   [[ -z "${KREW_ROOT-}" ]] && export KREW_ROOT="$HOME/.krew"
+
+  #>- Deno
+  local DENO_GLOBAL_BIN="$HOME/.deno/bin"
+  mkdir -p "$DENO_GLOBAL_BIN"
+  __path_add_top "$DENO_GLOBAL_BIN"
 }
 
 function __repo_init_path() {

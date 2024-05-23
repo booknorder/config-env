@@ -6,10 +6,13 @@ include: []
 create_files: {}
 
 env:
+  DENO_VERSION: 1.43.5
   NODE_VERSION: 20.11.1
   PNPM_VERSION: 8.15.5
 
 packages:
+  deno:
+    version: 1.43.5
   nodejs:
     version: 20.11.1
   nodePackages.pnpm:
@@ -31,4 +34,5 @@ shell:
       
       __log_echo " ➜ NODE_VERSION: $(node -v)"
       __log_echo " ➜ PNPM_VERSION: $(pnpm -v)"
+      __log_echo " ➜ DENO_VERSION: $(deno --version)"
 

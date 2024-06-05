@@ -2,12 +2,20 @@
 
 def main [
   --name: string
-  --version: string
   --repo: string
+  --version?: string
 ] {
   let files = (glob $"($env.HELM_PLUGINS)/*/plugin.yaml")
   let plugins = ($files | each {|f| (open $f) })
   let search = ($plugins | find name $name)
+
+  if ($version == null) {
+    if ($search | length) == 0 {
+      let proc = (do { helm plugin install $"($repo)" } | complete)
+      log-msg $"($proc.stdout) [($proc.exit_code)]"
+    }
+    return
+  }
 
   if ($search | length) == 0 {
     log-msg $"Helm: installing plugin - ($name) / v($version)"

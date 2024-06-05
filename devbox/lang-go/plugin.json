@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-go",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],

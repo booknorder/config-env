@@ -45,36 +45,35 @@ __repo_shell_opts_set
 _DIR_ROOT="$(__repo_shell_root_dir "$REPO_DEVBOX_VIRTENV_DIR")"
 _DIR_SOURCES="$REPO_DEVBOX_VIRTENV_DIR/shell"
 
+#>>-------------------------------------------------------------------------
+#>>-  Init: Defaults
+#>>-------------------------------------------------------------------------
+
 export REPO_ROOT="$_DIR_ROOT"
 export REPO_DEVBOX_VIRTENV
+export REPO_ENV="${REPO_ENV-dev}"
+export REPO_DEVBOX_PROFILE="$REPO_ROOT/.devbox/nix/profile/default"
+export REPO_DEVBOX_BIN="$REPO_DEVBOX_PROFILE/bin"
+export REPO_DEVBOX_RUN="${REPO_DEVBOX_RUN-0}"
+
+if [[ "$_SOURCED" == "1" && "$REPO_DEVBOX_RUN" == "0" ]]; then
+  export REPO_SCRIPT_DEBUG="${REPO_SCRIPT_DEBUG-1}"
+else
+  export REPO_SCRIPT_DEBUG="${REPO_SCRIPT_DEBUG-0}"
+fi
+
+#>- Vendor
+export HELM_PLUGINS="$REPO_ROOT/.devbox/helm/plugins"
+
+#! Check if this is being invoked by `devbox run ...`
+# [[ -n "${DEVBOX_RUN_CMD-}" ]] && IS_DEVBOX_RUN="1"
+
+#! This can disable certain things such as a terminal colors, simply by being defined
+# export CI="${CI-false}"
 
 #>>-------------------------------------------------------------------------
 #>>-  Init: Functions
 #>>-------------------------------------------------------------------------
-
-function __repo_init_defaults() {
-  #!! Cant use sourced functions here
-
-  export REPO_ENV="${REPO_ENV-dev}"
-  export REPO_DEVBOX_PROFILE="$REPO_ROOT/.devbox/nix/profile/default"
-  export REPO_DEVBOX_BIN="$REPO_DEVBOX_PROFILE/bin"
-  export REPO_DEVBOX_RUN="${REPO_DEVBOX_RUN-0}"
-
-  if [[ "$_SOURCED" == "1" && "$REPO_DEVBOX_RUN" == "0" ]]; then
-    export REPO_SCRIPT_DEBUG="${REPO_SCRIPT_DEBUG-1}"
-  else
-    export REPO_SCRIPT_DEBUG="${REPO_SCRIPT_DEBUG-0}"
-  fi
-
-  # Check if this is being invoked by `devbox run ...`
-  # [[ -n "${DEVBOX_RUN_CMD-}" ]] && IS_DEVBOX_RUN="1"
-
-  #>- Vendor
-  export HELM_PLUGINS="$REPO_ROOT/.devbox/helm/plugins"
-  # This can disable certain things such as a terminal colors, simply by being defined
-  # export CI="${CI-false}"
-
-}
 
 function __repo_init_sources() {
   #!! Cant use sourced functions here
@@ -197,7 +196,6 @@ function time_func() {
 }
 
 #>- Execute Functions (order matters)
-time_func __repo_init_defaults
 time_func __repo_init_sources
 time_func __repo_init_perms
 time_func __repo_init_env_full

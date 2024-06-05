@@ -10,7 +10,7 @@ def main [
   let search = ($plugins | find name $name)
 
   if ($search | length) == 0 {
-    log-title $"Helm: installing plugin - ($name) / v($version)"
+    log-msg $"Helm: installing plugin - ($name) / v($version)"
     plugin-install --name $name --version $version --repo $repo
     return
   }
@@ -18,11 +18,11 @@ def main [
   let plugin = ($search | get 0)
 
   if $"($plugin.version)" != $version {
-    log-title $"Helm: updating plugin - ($name) / v($plugin.version) -> v($version)"
+    log-msg $"Helm: updating plugin - ($name) / v($plugin.version) -> v($version)"
     plugin-uninstall --name $name --version $version --repo $repo
     plugin-install --name $name --version $version --repo $repo
   } else {
-    log-title $"Helm: plugin up-to-date - ($name) / v($version)"
+    log-msg $"Helm: plugin up-to-date - ($name) / v($version)"
   }
 }
 
@@ -54,13 +54,9 @@ def plugin-uninstall [
 }
 
 def log-title [title] {
-  if ('REPO_SCRIPT_DEBUG' in $env) and ($env.REPO_SCRIPT_DEBUG == "1") {
-    # print $"[nu:helm-plugins] ($title)"
-  }
+  print $"[nu:helm-plugins] ($title)"
 }
 
 def log-msg [msg] {
-  if ('REPO_SCRIPT_DEBUG' in $env) and ($env.REPO_SCRIPT_DEBUG == "1") {
-    # print $"[nu:helm-plugins]   ➤ ($msg)"
-  }
+  print $"[nu:helm-plugins]   ➤ ($msg)"
 }

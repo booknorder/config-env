@@ -182,6 +182,7 @@ function __repo_init_helm() {
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  Initializing Devbox: Base"
+echo "   ➜ REPO_ENV: $REPO_ENV"
 echo "   ➜ REPO_ROOT: $REPO_ROOT"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 

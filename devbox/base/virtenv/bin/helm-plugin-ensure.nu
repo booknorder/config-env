@@ -3,13 +3,13 @@
 def main [
   --name: string
   --repo: string
-  --version?: string
+  --version: string = ""
 ] {
   let files = (glob $"($env.HELM_PLUGINS)/*/plugin.yaml")
   let plugins = ($files | each {|f| (open $f) })
   let search = ($plugins | find name $name)
 
-  if ($version == null) {
+  if ($version == "") {
     if ($search | length) == 0 {
       let proc = (do { helm plugin install $"($repo)" } | complete)
       log-msg $"($proc.stdout) [($proc.exit_code)]"

@@ -154,23 +154,25 @@ function __repo_init_helm() {
     log_step "Helm: Install Plugins"
 
     log_step_sub "Ensure: s3 ➜ $HELM_PLUGIN_S3_VERSION"
-    __helm_plugin_ensure "s3" "$HELM_PLUGIN_S3_VERSION" "https://github.com/hypnoglow/helm-s3.git"
+    __helm_plugin_ensure "s3" "https://github.com/hypnoglow/helm-s3.git" "$HELM_PLUGIN_S3_VERSION"
 
     log_step_sub "Ensure: diff ➜ $HELM_PLUGIN_DIFF_VERSION"
-    __helm_plugin_ensure "diff" "$HELM_PLUGIN_DIFF_VERSION" "https://github.com/databus23/helm-diff"
+    __helm_plugin_ensure "diff" "https://github.com/databus23/helm-diff" "$HELM_PLUGIN_DIFF_VERSION"
 
     log_step_sub "Ensure: secrets ➜ $HELM_PLUGIN_SECRETS_VERSION"
-    __helm_plugin_ensure "secrets" "$HELM_PLUGIN_SECRETS_VERSION" "https://github.com/jkroepke/helm-secrets"
+    __helm_plugin_ensure "secrets" "https://github.com/jkroepke/helm-secrets" "$HELM_PLUGIN_SECRETS_VERSION"
 
     log_step_sub "Ensure: helm-git ➜ $HELM_PLUGIN_GIT_VERSION"
-    __helm_plugin_ensure "helm-git" "$HELM_PLUGIN_GIT_VERSION" "https://github.com/aslafy-z/helm-git"
+    __helm_plugin_ensure "helm-git" "https://github.com/aslafy-z/helm-git" "$HELM_PLUGIN_GIT_VERSION"
 
     log_step_sub "Ensure: mapkubeapis ➜ $HELM_PLUGIN_MAPKUBEAPIS_VERSION"
-    __helm_plugin_ensure "mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION" "https://github.com/helm/helm-mapkubeapis"
+    __helm_plugin_ensure "mapkubeapis" "https://github.com/helm/helm-mapkubeapis" "$HELM_PLUGIN_MAPKUBEAPIS_VERSION"
 
     if [[ "${CI-false}" != "true" ]]; then
-      log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
-      __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
+      log_step_sub "Ensure: dashboard"
+      __helm_plugin_ensure "dashboard" "https://github.com/komodorio/helm-dashboard.git"
+      # log_step_sub "Ensure: dashboard ➜ $HELM_PLUGIN_DASHBOARD_VERSION"
+      # __helm_plugin_ensure "dashboard" "$HELM_PLUGIN_DASHBOARD_VERSION" "https://github.com/komodorio/helm-dashboard.git"
     fi
   fi
 }

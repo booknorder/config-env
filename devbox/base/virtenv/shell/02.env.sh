@@ -119,9 +119,9 @@ function __nix_completions_load() {
 function __helm_plugin_ensure() {
   local name="$1"
   local repo="$2"
-  local version="$3"
+  local version="${3-}"
   # Check if the version is empty
-  if [[ "${version-}" == "" ]]; then
+  if [[ "$version" == "" ]]; then
     nu "$REPO_DEVBOX_VIRTENV_DIR/bin/helm-plugin-ensure.nu" \
       --name="$name" \
       --repo="$repo"

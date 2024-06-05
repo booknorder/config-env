@@ -62,9 +62,9 @@ def plugin-uninstall [
 }
 
 def log-title [title] {
-  print $"[nu:helm-plugins] ($title)"
+  print $"[nu] ($title)"
 }
 
 def log-msg [msg] {
-  print $"[nu:helm-plugins]   ➤ ($msg)"
+  print $"      [nu]   ➤ ($msg)"
 }

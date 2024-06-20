@@ -1,6 +1,6 @@
 {
   "name": "bno-lang-rust",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "description": "Setup runtime Rust",
   "readme": "README.md",
   "include": [],

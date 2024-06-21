@@ -45,6 +45,34 @@
               };
             };
           };
+          atlas-go-community = {
+            name = "atlas-go-commuity";
+            repo = "https://release.ariga.io";
+            version = "v0.24.0";
+            tag = "v0.24.0";
+            archMap = {
+              aarch64-darwin = {
+                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+                name = "darwin-arm64";
+                ext = "";
+              };
+              x86_64-darwin = {
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                name = "darwin-amd64";
+                ext = "";
+              };
+              x86_64-linux = {
+                hash = "sha256-V6K6c9RvqBdUPSKt8uWr5LXeCc74B+At4+r5NpExk1s=";
+                name = "linux-amd64";
+                ext = "";
+              };
+              x86_64-windows = {
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                name = "windows-amd64";
+                ext = ".exe";
+              };
+            };
+          };
           hasura-cli = {
             name = "hasura-cli";
             repo = "https://github.com/hasura/graphql-engine";
@@ -115,6 +143,28 @@
               name = "${pkg.name}-${pkg.version}";
               src = pkgs.fetchurl {
                 url = "${pkg.repo}/atlas/atlas-${arch.name}-${pkg.version}${arch.ext}";
+                hash = "${arch.hash}";
+              };
+              unpackPhase = ":";
+              buildPhase = ":";
+              installPhase =
+                ''
+                  mkdir -p $out/bin
+                  cp $src $out/bin/atlas
+                  chmod +x $out/bin/atlas
+                '';
+            };
+
+          #>>- AtlasGo Community
+          ${programs.atlas-go-community.name} =
+            let
+              pkg = programs.atlas-go-community;
+              arch = programs.atlas-go-community.archMap.${system} or (throw "Unsupported system: ${system}");
+            in
+            stdenv.mkDerivation rec {
+              name = "${pkg.name}-${pkg.version}";
+              src = pkgs.fetchurl {
+                url = "${pkg.repo}/atlas/atlas-community-${arch.name}-${pkg.version}${arch.ext}";
                 hash = "${arch.hash}";
               };
               unpackPhase = ":";

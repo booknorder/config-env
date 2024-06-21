@@ -34,7 +34,7 @@
                 ext = "";
               };
               x86_64-linux = {
-                hash = "sha256-v080WO4zcA8CCKIr0v/Sh2mlKz47nS/jfGoaWHELwQ4=";
+                hash = "sha256-V6K6c9RvqBdUPSKt8uWr5LXeCc74B+At4+r5NpExk1s=";
                 name = "linux-amd64";
                 ext = "";
               };

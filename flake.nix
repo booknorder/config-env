@@ -45,7 +45,7 @@
             };
           };
           atlas-go-community = {
-            name = "atlas-go-commuity";
+            name = "atlas-go-community";
             repo = "https://release.ariga.io";
             version = "v0.24.0";
             tag = "v0.24.0";

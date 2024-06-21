@@ -19,7 +19,7 @@
           # https://release.ariga.io/atlas/atlas-linux-amd64-v0.24.0
           atlas-go = {
             name = "atlas-go";
-            repo = "https://release.ariga.io/atlas";
+            repo = "https://release.ariga.io";
             version = "v0.24.0";
             tag = "v0.24.0";
             archMap = {

@@ -16,7 +16,6 @@
 
         #@@ Programs
         programs = {
-          # https://release.ariga.io/atlas/atlas-linux-amd64-v0.24.0
           atlas-go = {
             name = "atlas-go";
             repo = "https://release.ariga.io";

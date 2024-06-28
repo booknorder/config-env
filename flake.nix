@@ -23,7 +23,7 @@
             tag = "v0.24.0";
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+                hash = "sha256-U7p+r8xluNiNZGUTC7JuZE8Z0xx0lnDm+RdS4pO0ws8=";
                 name = "darwin-arm64";
                 ext = "";
               };

@@ -11,9 +11,11 @@
 
 function __path_print() {
   # echo "$1" | tr ':' '\n' | xargs -I {} log_step "{}"
-  while IFS= read -r line; do
-    log_step_sub "$line"
-  done < <(echo "$1" | tr ':' '\n')
+  echo "$1" | tr ':' '\n' | xargs -I {} log_step "{}"
+  #! Not sure why this doesnt work on ZSH
+  # while IFS= read -r line; do
+  #   log_step_sub "$line"
+  # done < <(echo "$1" | tr ':' '\n')
 }
 
 function __path_add_top() {

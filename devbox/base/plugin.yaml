@@ -4,36 +4,34 @@ description: Setup Shell/Devbox environment consistently across all projects
 readme: README.md
 include: []
 packages:
-  curl:
-    version: latest
-  fd:
-    version: latest
-  git:
-    version: latest
-  go-task:
-    version: "3.37.2"
-  gomplate:
-    version: 3.11.7
-  helmfile:
-    version: "0.165.0"
-  jq:
-    version: latest
-  krew:
-    version: latest
-  kubectl:
-    version: '1.29'
-  kubectx:
-    version: latest
-  kubernetes-helm:
-    version: 3.15.1
-  netcat-gnu:
-    version: latest
-  nushell:
-    version: latest
-  stern:
-    version: latest
-  wget:
-    version: latest
+  # System
+  # bash: "latest"
+  coreutils-full: "latest"
+  curl: "latest"
+  findutils: "latest"
+  gnused: "latest"
+  gnugrep: "latest"
+  gzip: "latest"
+  gawk: "latest"
+  netcat-gnu: "latest"
+  rsync: "latest"
+  wget: "latest"
+  zip: "latest"
+  # Utilities
+  fd: "latest"
+  git: "latest"
+  # Project
+  go-task: "3.37.2"
+  gomplate: "3.11.7"
+  helmfile: "0.165.0"
+  jq: "latest"
+  krew: "latest"
+  kubectl: "1.29"
+  kubectx: "latest"
+  kubernetes-helm: "3.15.1"
+  nushell: "latest"
+  stern: "latest"
+
 create_files:
   '{{ .Virtenv }}/bin/devbox-run': virtenv/bin/devbox-run
   '{{ .Virtenv }}/bin/devbox-task': virtenv/bin/devbox-task

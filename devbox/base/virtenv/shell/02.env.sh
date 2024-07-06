@@ -5,6 +5,14 @@
 #-➤ _DIR_SOURCES
 #-➤ REPO_ROOT
 
+function __is_bash() {
+  if [[ "$BASH" ]]; then
+    echo "1"
+  else
+    echo "0"
+  fi
+}
+
 #>>-------------------------------------------
 #>>-  PATH
 #>>-------------------------------------------
@@ -80,6 +88,8 @@ function __nix_env_path_fix() {
   local dir
   local scope="$1"
   local file="$2"
+  local nix_path
+  local nix_path_fixed
 
   dir="$(dirname "$file")"
 
@@ -112,6 +122,10 @@ function __nix_env_fix() {
 function __nix_completions_load() {
   local
   local filename
+
+  if [[ "$(__is_bash)" == "0" ]]; then
+    return 0
+  fi
 
   for file in "$REPO_ROOT"/.devbox/nix/profile/default/share/bash-completion/completions/*; do
     if [ -r "$file" ]; then

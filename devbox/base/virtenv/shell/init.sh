@@ -128,6 +128,7 @@ function __repo_init_env() {
         # " ${prod_env_local_vars[*]} " =~ " $var_key "
         if [[ "$var_name" == "$var_key" && -z "${!var_key:-}" ]]; then
           export "$var_key=${var_value//\"/}"
+          log_step_sub "Loaded variable (.env.local): $var_key"
         fi
       done
     done <"$REPO_ROOT/.env.local"

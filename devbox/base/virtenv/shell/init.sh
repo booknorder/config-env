@@ -126,7 +126,7 @@ function __repo_init_env() {
       #>= Check if the variable in the array and not set
       for var_name in "${prod_env_local_vars[@]}"; do
         # " ${prod_env_local_vars[*]} " =~ " $var_key "
-        if [[ "$var_name" == "$var_key" && -z "${!var_key}" ]]; then
+        if [[ "$var_name" == "$var_key" && -z "${!var_key:-}" ]]; then
           export "$var_key=${var_value//\"/}"
         fi
       done

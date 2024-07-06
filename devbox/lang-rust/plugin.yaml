@@ -35,10 +35,17 @@ shell:
       __log_echo " ➜ Create home directory"
       mkdir -p "$RUSTUP_HOME"
       
-      __log_echo " ➜ Install rust toolchain"
+      if rustup toolchain list | grep -q nightly; then
+        __log_echo " ➜ Rust nightly toolchain already installed"
+      else
+        __log_echo " ➜ Install Rust nightly toolchain"
+        __log_echo "$(rustup toolchain install nightly)"
+      fi
       
-      __log_echo "$(rustup toolchain install nightly)"
+      __log_echo " ➜ Install rust toolchain"
       __log_echo "$(rustup default stable)"
+      
+      __log_echo " ➜ Install clippy & rust-src"
       __log_echo "$(rustup component add clippy)"
       __log_echo "$(rustup component add rust-src)"
       

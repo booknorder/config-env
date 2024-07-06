@@ -10,12 +10,12 @@
 #>>-------------------------------------------
 
 function __path_print() {
+  #! Mac OS: works
   # echo "$1" | tr ':' '\n' | xargs -I {} log_step "{}"
-  echo "$1" | tr ':' '\n' | xargs -I {} log_step "{}"
-  #! Not sure why this doesnt work on ZSH
-  # while IFS= read -r line; do
-  #   log_step_sub "$line"
-  # done < <(echo "$1" | tr ':' '\n')
+  #! Mac OS: doesnt work
+  while IFS= read -r line; do
+    log_step_sub "$line"
+  done < <(echo "$1" | tr ':' '\n')
 }
 
 function __path_add_top() {
@@ -86,18 +86,18 @@ function __nix_env_path_fix() {
   if [[ -d "$dir" && -r "$file" ]]; then
     log_step_sub "Trim 'nix print-dev-env' entries from 'PATH' ($scope)"
     nix_path="$(jq -r '.Variables.PATH.Value' <"$file")"
+    nix_path_fixed=$(echo "$PATH" | tr ':' '\n' | grep -v -F -x -f <(echo "$nix_path" | tr ':' '\n') | tr '\n' ':' | sed 's/:$//')
 
-    # nix_path_fixed=$(echo "$PATH" | tr ':' '\n' | grep -v -F -x -f <(echo "$nix_path" | tr ':' '\n') | tr '\n' ':' | sed 's/:$//')
-
-    # Create a temporary file for nix_path
-    tmp_nix_path=$(mktemp)
-    # Split nix_path into lines and save it to the temporary file
-    echo "$nix_path" | tr ':' '\n' > "$tmp_nix_path"
-    # Filter the PATH
-    nix_path_fixed=$(echo "$PATH" | tr ':' '\n' | grep -v -F -x -f "$tmp_nix_path" | tr '\n' ':' | sed 's/:$//')
-    # Clean up the temporary file
-    rm "$tmp_nix_path"
-    echo "$nix_path_fixed"
+    #! MacOS Fix
+    ## Create a temporary file for nix_path
+    # tmp_nix_path=$(mktemp)
+    ## Split nix_path into lines and save it to the temporary file
+    # echo "$nix_path" | tr ':' '\n' >"$tmp_nix_path"
+    ## Filter the PATH
+    # nix_path_fixed=$(echo "$PATH" | tr ':' '\n' | grep -v -F -x -f "$tmp_nix_path" | tr '\n' ':' | sed 's/:$//')
+    ## Clean up the temporary file
+    # rm "$tmp_nix_path"
+    # echo "$nix_path_fixed"
 
     export PATH="$nix_path_fixed"
   fi

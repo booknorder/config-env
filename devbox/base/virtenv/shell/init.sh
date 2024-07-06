@@ -99,14 +99,38 @@ function __repo_init_perms() {
 }
 
 function __repo_init_env() {
+  local var_key
+  local var_value
+  local var_name
+  local prod_env_local_vars=("SOPS_AGE_KEY" "GCLOUD_BIN")
+
   log_step "Load dotenv files"
   __dotenv_load "$REPO_ROOT/.env.repo"
   __dotenv_load "$REPO_ROOT/.env"
 
-  #>- Dotenv: Development
-  #  ➤ Must load `.env.local` to override values from `.env.repo`
+  if [ ! -f "$REPO_ROOT/.env.local" ]; then
+    log_step "Skipping .env.local (not found)"
+    return 0
+  fi
+
+  #>- .env.local
+  #  ➤ [dev] Must load `.env.local` to override values from `.env.repo`
+  #  ➤ [prod] Load only select variables, if not set
   if [[ "$REPO_ENV" != "prod" ]]; then
     __dotenv_load "$REPO_ROOT/.env.local"
+  else
+    while IFS='=' read -r var_key var_value; do
+      #>= Skip empty lines and comments
+      [[ -z "$var_key" || "$var_key" == \#* ]] && continue
+
+      #>= Check if the variable in the array and not set
+      for var_name in "${prod_env_local_vars[@]}"; do
+        # " ${prod_env_local_vars[*]} " =~ " $var_key "
+        if [[ "$var_name" == "$var_key" && -z "${!var_key}" ]]; then
+          export "$var_key=${var_value//\"/}"
+        fi
+      done
+    done <"$REPO_ROOT/.env.local"
   fi
 }
 

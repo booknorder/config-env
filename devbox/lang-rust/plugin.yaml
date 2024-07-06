@@ -1,3 +1,4 @@
+$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json
 name: bno-lang-rust
 version: ""
 description: Setup runtime Rust
@@ -10,10 +11,8 @@ env:
   LIBRARY_PATH: "$LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib"
 
 packages:
-  libiconv:
-    version: latest
-  rustup:
-    version: latest
+  libiconv: latest
+  rustup: latest
 
 shell:
   scripts: {}

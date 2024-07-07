@@ -1,22 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno-lang-node",
-  "version": "0.18.5",
+  "version": "1.0.0",
   "description": "Setup runtime Node.js",
   "readme": "README.md",
   "include": [],
   "create_files": {},
   "env":
   {
-    "DENO_VERSION": "1.43.5",
-    "NODE_VERSION": "20.11.1",
-    "PNPM_VERSION": "8.15.5"
+    "DENO_VERSION": "1.44.4",
+    "NODE_VERSION": "22.3.0",
+    "PNPM_VERSION": "9.3.0"
   },
   "packages":
   {
-    "deno": "1.43.5",
-    "nodejs": "20.11.1",
-    "nodePackages.pnpm": "8.15.5"
+    "deno": "1.44.4",
+    "nodejs": "22.3.0",
+    "nodePackages.pnpm": "9.3.0"
   },
   "shell":
   {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno",
-  "version": "0.18.4",
+  "version": "0.18.5",
   "description": "Setup Shell/Devbox environment consistently across all projects",
   "readme": "README.md",
   "include": [],
@@ -21,6 +21,7 @@
     "fd": "latest",
     "git": "latest",
     "rclone": "1",
+    "watchexec": "2",
     "go-task": "3.37.2",
     "gomplate": "3.11.7",
     "helmfile": "0.165.0",

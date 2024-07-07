@@ -10,7 +10,7 @@
 #-➤ REPO_ROOT
 
 #>>- Skip if CI environment
-if [ "${CI-false}" != "true" ]; then
+if [[ "${CI-false}" != "true" ]]; then
   #@ Adjust shell options as starting ssh may fail
   set +e
 
@@ -18,7 +18,7 @@ if [ "${CI-false}" != "true" ]; then
   ssh-add -l &>/dev/null
 
   #@ If agent not running, start it
-  if [ "$?" == 2 ]; then
+  if [[ "$?" == 2 ]]; then
     echo "SSH: Could not open a connection to your authentication agent"
     echo "SSH: Load stored agent connection info"
     test -r ~/.ssh-agent &&

@@ -6,9 +6,9 @@
 #-➤ REPO_ROOT
 
 echo "[Debug] Shell: $SHELL"
-echo "[Debug] Shell Version: $($SHELL --version)"
-echo "[Debug] Shell Path: $(which $SHELL)"
-echo "[Debug] Environment Path: $PATH"
+# echo "[Debug] Shell Version: $($SHELL --version)"
+# echo "[Debug] Shell Path: $(which $SHELL)"
+# echo "[Debug] Environment Path: $PATH"
 
 function __is_bash() {
   if [[ "$BASH" ]]; then

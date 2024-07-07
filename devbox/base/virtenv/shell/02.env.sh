@@ -113,7 +113,7 @@ function __nix_env_path_fix() {
     nix_path_fixed=$(echo "$PATH" | tr ':' '\n' | grep -v -F -x -f "$nix_path_temp" | tr '\n' ':' | sed 's/:$//')
     # Clean up the temporary file
     rm "$nix_path_temp"
-    echo "$nix_path_fixed"
+    # echo "$nix_path_fixed"
 
     export PATH="$nix_path_fixed"
   fi

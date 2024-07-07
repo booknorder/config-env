@@ -38,6 +38,7 @@ packages:
 create_files:
   '{{ .Virtenv }}/bin/devbox-run': virtenv/bin/devbox-run
   '{{ .Virtenv }}/bin/devbox-task': virtenv/bin/devbox-task
+  '{{ .Virtenv }}/bin/devbox-link': virtenv/bin/devbox-link
   '{{ .Virtenv }}/bin/helm-plugin-ensure.nu': virtenv/bin/helm-plugin-ensure.nu
   '{{ .Virtenv }}/shell/00.ansi.sh': virtenv/shell/00.ansi.sh
   '{{ .Virtenv }}/shell/01.base.sh': virtenv/shell/01.base.sh

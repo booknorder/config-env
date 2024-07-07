@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Usage:
+# - `devbox-link <input-executable> <output-executable>`
+# - "input-executable": is the absolute path to the executable
+# - "output-executable": is just the filename, not the full path
+
+DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+INPUT="$1"
+OUTPUT="$2"
+
+if [ -z "${INPUT}" ] || [ -z "${OUTPUT}" ]; then
+    echo "Usage: devbox-link <input-executable> <output-executable>"
+    exit 1
+fi
+
+OUTPUT="$DIR/$OUTPUT"
+
+ln -s "$INPUT" "$OUTPUT"
+
+echo "Linked executable"
+echo " - Input: $INPUT"
+echo " - Output: $OUTPUT"

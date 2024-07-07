@@ -6,7 +6,7 @@ readme: README.md
 include: []
 packages:
   # System
-  # bash: latest
+  bash: latest
   coreutils-full: latest
   curl: latest
   findutils: latest

@@ -10,13 +10,12 @@ INPUT="$1"
 OUTPUT="$2"
 
 if [ -z "${INPUT}" ] || [ -z "${OUTPUT}" ]; then
-    echo "Usage: devbox-link <input-executable> <output-executable>"
-    exit 1
+  echo "Usage: devbox-link <input-executable> <output-executable>"
+  exit 1
 fi
 
 OUTPUT="$DIR/$OUTPUT"
 
-ln -s "$INPUT" "$OUTPUT"
+ln -sf "$INPUT" "$OUTPUT"
 
 echo "Linked executable: $INPUT -> $OUTPUT"
-

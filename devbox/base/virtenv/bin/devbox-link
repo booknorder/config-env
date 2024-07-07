@@ -18,6 +18,5 @@ OUTPUT="$DIR/$OUTPUT"
 
 ln -s "$INPUT" "$OUTPUT"
 
-echo "Linked executable"
-echo " - Input: $INPUT"
-echo " - Output: $OUTPUT"
+echo "Linked executable: $INPUT -> $OUTPUT"
+

@@ -5,6 +5,10 @@
 #-➤ _DIR_SOURCES
 #-➤ REPO_ROOT
 
+echo "[Debug] Shell: $SHELL"
+echo "[Debug] Shell Version: $($SHELL --version)"
+echo "[Debug] Shell Path: $(which $SHELL)"
+
 function __is_bash() {
   if [[ "$BASH" ]]; then
     echo "1"

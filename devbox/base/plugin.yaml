@@ -60,8 +60,8 @@ shell:
       export HELM_PLUGIN_MAPKUBEAPIS_VERSION="${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}"
       
       # Load shell sources
-      # source {{ .Virtenv }}/shell/init.sh
-      source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')
+      source {{ .Virtenv }}/shell/init.sh
+      # source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')
       
       # Create .gitignore file if not exists
       if [ ! -f "$REPO_ROOT/.gitignore" ]; then

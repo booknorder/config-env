@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Setup Shell/Devbox environment consistently across all projects",
   "readme": "README.md",
   "include": [],

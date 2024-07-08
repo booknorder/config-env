@@ -15,7 +15,7 @@ env:
 packages:
   deno: "1.44.4"
   nodejs: "22.3.0"
-  # nodePackages.pnpm: "9.3.0"
+  #nodePackages.pnpm: "9.3.0"
 
 shell:
   scripts: {}

@@ -10,11 +10,12 @@ env:
   DENO_VERSION: "1.44.4" # "1.43.5"
   NODE_VERSION: "22.3.0" # "20.11.1"
   PNPM_VERSION: "9.3.0" # "8.15.5"
+  DEVBOX_COREPACK_ENABLED: "true"
 
 packages:
   deno: "1.44.4"
   nodejs: "22.3.0"
-  nodePackages.pnpm: "9.3.0"
+  # nodePackages.pnpm: "9.3.0"
 
 shell:
   scripts: {}

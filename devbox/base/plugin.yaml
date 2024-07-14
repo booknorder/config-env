@@ -34,6 +34,7 @@ packages:
   kubernetes-helm: "3.15.1"
   nushell: latest
   stern: latest
+  yq: latest
 
 create_files:
   '{{ .Virtenv }}/bin/devbox-run': virtenv/bin/devbox-run

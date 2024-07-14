@@ -128,6 +128,29 @@
               };
             };
           };
+          pkl = {
+            name = "pkl";
+            repo = "https://github.com/apple/pkl";
+            tag = "0.26.1";
+            archMap = {
+              aarch64-darwin = {
+                filename = "pkl-macos-aarch64";
+                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+              };
+              x86_64-darwin = {
+                filename = "pkl-macos-amd64";
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              };
+              x86_64-linux = {
+                filename = "pkl-linux-amd64";
+                hash = "sha256-KcNDCUdlbUkiA+A2jekqP6sqtcMuQwh9HEQ2aPX1wLE=";
+              };
+              x86_64-windows = {
+                filename = "pkl-windows-amd64.exe";
+                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              };
+            };
+          };
         };
       in
       {
@@ -221,6 +244,29 @@
                   ln -s $src/mutagen-agents.tar.gz $out/bin/
                 '';
             };
+
+          #>>- PKL
+          ${programs.pkl.name} =
+            let
+              pkg = programs.pkl;
+              arch = programs.pkl.archMap.${system} or (throw "Unsupported system: ${system}");
+            in
+            stdenv.mkDerivation rec {
+              name = "${pkg.name}-v${pkg.tag}";
+              src = pkgs.fetchurl {
+                url = "${pkg.repo}/releases/download/${pkg.tag}/${arch.filename}";
+                hash = "${arch.hash}";
+              };
+              unpackPhase = ":";
+              buildPhase = ":";
+              installPhase =
+                ''
+                  mkdir -p $out/bin
+                  cp $src $out/bin/pkl
+                  chmod +x $out/bin/pkl
+                '';
+            };
+
         };
       });
 }

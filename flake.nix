@@ -135,19 +135,19 @@
             archMap = {
               aarch64-darwin = {
                 filename = "pkl-macos-aarch64";
-                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+                hash = "sha256-KRNAU2dpTTrDflggAJW5mmrmH+UKKz7F9cn0nPBUhOI=";
               };
               x86_64-darwin = {
                 filename = "pkl-macos-amd64";
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                hash = "sha256-JmjT9jmNy6zcxjO8DMpxdB/2SuaCSiIecZ2ls95yqjk=";
               };
               x86_64-linux = {
                 filename = "pkl-linux-amd64";
-                hash = "0ipr60kmc2jn8l8q0njj80m2k6xrcbd1m72gibyyzwszb34955lw";
+                hash = "sha256-nJaSyFhf8+/9ik+cGtpiuZspKkBSWoARRVYKVicw+UY=";
               };
               x86_64-windows = {
                 filename = "pkl-windows-amd64.exe";
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                hash = "sha256-FGINZX+lTS8MFjh+7yYvIrh5sBEzGfeQ2NlG5pynSf8=";
               };
             };
           };

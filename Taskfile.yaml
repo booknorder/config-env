@@ -11,6 +11,19 @@ tasks:
 
   latest: npm pkg get version
 
+  nix:url-hash:
+    silent: true
+    cmd: |
+      URL="{{.url | default .CLI_ARGS}}"
+      if [[ -z "$URL" ]]; then
+        echo "URL not provided via 'url=<URL>' or '-- <URL>'"
+        exit 1
+      fi
+      Base32_Hash="$(nix-prefetch-url --type sha256 "{{.url | default .CLI_ARGS}}")"
+      Base64_Hash="$(nix hash to-base64 --type sha256 "$Base32_Hash")"
+      echo ""
+      echo "[SHA256] $Base64_Hash"
+
   lefthook: npm exec lefthook {{.CLI_ARGS | default "install"}}
 
   lefthook:pre-commit:

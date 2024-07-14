@@ -143,7 +143,7 @@
               };
               x86_64-linux = {
                 filename = "pkl-linux-amd64";
-                hash = "sha256-nJaSyFhf8+/9ik+cGtpiuZspKkBSWoARRVYKVicw+UY=";
+                hash = "0ipr60kmc2jn8l8q0njj80m2k6xrcbd1m72gibyyzwszb34955lw";
               };
               x86_64-windows = {
                 filename = "pkl-windows-amd64.exe";

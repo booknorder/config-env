@@ -16,6 +16,7 @@ fi
 
 OUTPUT="$DIR/$OUTPUT"
 
+rm -f "$OUTPUT"
 ln -sf "$INPUT" "$OUTPUT"
 
 echo "Linked executable: $INPUT -> $OUTPUT"

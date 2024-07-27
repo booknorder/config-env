@@ -23,6 +23,7 @@ packages:
   git: latest
   rclone: "1"
   watchexec: "2"
+  shellcheck: "0.10.0"
   # Project
   go-task: "3.37.2"
   gomplate: "3.11.7"

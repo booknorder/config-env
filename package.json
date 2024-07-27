@@ -1,6 +1,6 @@
 {
   "name": "@booknorder/config-env",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "scripts": {},
   "packageManager": "npm@10.8.1",
   "devDependencies": {

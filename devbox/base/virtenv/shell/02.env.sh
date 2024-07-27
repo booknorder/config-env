@@ -133,7 +133,7 @@ function __nix_completions_load() {
     return 0
   fi
 
-  if command -v complete > /dev/null 2>&1; then
+  if command -v complete >/dev/null 2>&1; then
     for file in "$REPO_ROOT"/.devbox/nix/profile/default/share/bash-completion/completions/*; do
       if [ -r "$file" ]; then
         filename="$(basename "$file")"

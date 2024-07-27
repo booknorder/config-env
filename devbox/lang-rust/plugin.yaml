@@ -49,7 +49,7 @@ shell:
       __log_echo "$(rustup component add rust-src)"
       
       __log_echo " ➜ Run cargo fetch"
-      cargo fetch &>/dev/null
+      cargo fetch &>/dev/null || true
       
       __log_echo " ➜ Details"
       __log_echo "$(rustup show)"

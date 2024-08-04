@@ -1,28 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno-lang-go",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "include": [],
   "create_files": {},
-  "env":
-  {
+  "env": {
     "GO_VERSION": "1.20.2",
     "GOPATH": "$PWD/.devbox/runtimes/go",
     "PATH": "$PWD/.devbox/runtimes/go/bin:$PATH"
   },
-  "packages":
-  {
+  "packages": {
     "go": "1.20.2",
     "golangci-lint": "1.52"
   },
-  "shell":
-  {
+  "shell": {
     "scripts": {},
-    "init_hook":
-    [
-      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Go\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n__log_echo \" ➜ GOPATH: $GOPATH\"\n__log_echo \" ➜ GO_VERSION: $(go version)\"\n\n__log_echo \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\"\n"
+    "init_hook": [
+      "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Go\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n__log_echo \" ➜ GOPATH: $GOPATH\"\n__log_echo \" ➜ GO_VERSION: $(go version)\"\n\n__log_echo \" ➜ Create GOPATH directory\"\nmkdir -p \"$GOPATH\"\nmkdir -p \"$GOPATH/bin\""
     ]
   }
 }

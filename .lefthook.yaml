@@ -4,11 +4,11 @@
 pre-commit:
   commands:
     tag:
-      run: devbox run -- task lefthook:pre-commit
+      run: echo "pre-commit" && devbox run -- task lefthook:pre-commit
 post-commit:
   commands:
     tag:
-      run: devbox run -- task lefthook:post-commit
+      run: echo "post-commit" && devbox run -- task lefthook:post-commit
       skip:
         - run: |
             MSG="$(git log -1 --pretty=format:%s)"

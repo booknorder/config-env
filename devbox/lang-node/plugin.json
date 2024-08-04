@@ -1,28 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno-lang-node",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Setup runtime Node.js",
   "readme": "README.md",
   "include": [],
   "create_files": {},
-  "env":
-  {
+  "env": {
     "DENO_VERSION": "1.44.4",
     "NODE_VERSION": "22.3.0",
     "PNPM_VERSION": "9.3.0",
     "DEVBOX_COREPACK_ENABLED": "true"
   },
-  "packages":
-  {
+  "packages": {
     "deno": "1.44.4",
     "nodejs": "22.3.0"
   },
-  "shell":
-  {
+  "shell": {
     "scripts": {},
-    "init_hook":
-    [
+    "init_hook": [
       "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Node.js\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n\n__log_echo \" ➜ NODE_VERSION: $(node -v)\"\n__log_echo \" ➜ DENO_VERSION: $(deno --version)\"\n"
     ]
   }

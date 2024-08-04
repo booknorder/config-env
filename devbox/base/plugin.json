@@ -1,12 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
   "name": "bno",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Setup Shell/Devbox environment consistently across all projects",
   "readme": "README.md",
   "include": [],
-  "packages":
-  {
+  "packages": {
     "bash": "latest",
     "coreutils-full": "latest",
     "curl": "latest",
@@ -36,8 +35,7 @@
     "stern": "latest",
     "yq": "latest"
   },
-  "create_files":
-  {
+  "create_files": {
     "{{ .Virtenv }}/bin/devbox-run": "virtenv/bin/devbox-run",
     "{{ .Virtenv }}/bin/devbox-task": "virtenv/bin/devbox-task",
     "{{ .Virtenv }}/bin/devbox-link": "virtenv/bin/devbox-link",
@@ -49,16 +47,13 @@
     "{{ .Virtenv }}/shell/init.sh": "virtenv/shell/init.sh",
     "{{ .Virtenv }}/templates/gitignore": "virtenv/templates/gitignore"
   },
-  "env":
-  {
+  "env": {
     "REPO_DEVBOX_VIRTENV_DIR": "{{ .Virtenv }}"
   },
-  "shell":
-  {
+  "shell": {
     "scripts": {},
-    "init_hook":
-    [
-      "export HELM_PLUGIN_S3_VERSION=\"${HELM_PLUGIN_S3_VERSION-0.16.0}\"\nexport HELM_PLUGIN_DIFF_VERSION=\"${HELM_PLUGIN_DIFF_VERSION-3.9.7}\"\nexport HELM_PLUGIN_DASHBOARD_VERSION=\"${HELM_PLUGIN_DASHBOARD_VERSION-1.3.3}\"\nexport HELM_PLUGIN_SECRETS_VERSION=\"${HELM_PLUGIN_SECRETS_VERSION-4.6.0}\"\nexport HELM_PLUGIN_GIT_VERSION=\"${HELM_PLUGIN_GIT_VERSION-0.16.0}\"\nexport HELM_PLUGIN_MAPKUBEAPIS_VERSION=\"${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}\"\n\n# Load shell sources\nsource {{ .Virtenv }}/shell/init.sh\n# source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')\n\n# Create .gitignore file if not exists\nif [ ! -f \"$REPO_ROOT/.gitignore\" ]; then\n  log_msg \"Create .gitignore template\"\n  cp \"{{ .Virtenv }}/templates/gitignore\" \"$REPO_ROOT/.gitignore\"\nfi\n"
+    "init_hook": [
+      "export HELM_PLUGIN_S3_VERSION=\"${HELM_PLUGIN_S3_VERSION-0.16.0}\"\nexport HELM_PLUGIN_DIFF_VERSION=\"${HELM_PLUGIN_DIFF_VERSION-3.9.7}\"\nexport HELM_PLUGIN_DASHBOARD_VERSION=\"${HELM_PLUGIN_DASHBOARD_VERSION-1.3.3}\"\nexport HELM_PLUGIN_SECRETS_VERSION=\"${HELM_PLUGIN_SECRETS_VERSION-4.6.0}\"\nexport HELM_PLUGIN_GIT_VERSION=\"${HELM_PLUGIN_GIT_VERSION-0.16.0}\"\nexport HELM_PLUGIN_MAPKUBEAPIS_VERSION=\"${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}\"\n\n# Load shell sources\nsource {{ .Virtenv }}/shell/init.sh\n# source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')\n\n# Create .gitignore file if not exists\nif [ ! -f \"$REPO_ROOT/.gitignore\" ]; then\n  log_msg \"Create .gitignore template\"\n  cp \"{{ .Virtenv }}/templates/gitignore\" \"$REPO_ROOT/.gitignore\"\nfi"
     ]
   }
 }

@@ -35,3 +35,4 @@ shell:
       __log_echo " ➜ Create GOPATH directory"
       mkdir -p "$GOPATH"
       mkdir -p "$GOPATH/bin"
+

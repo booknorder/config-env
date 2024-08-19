@@ -131,23 +131,23 @@
           pkl = {
             name = "pkl";
             repo = "https://github.com/apple/pkl";
-            tag = "0.26.1";
+            tag = "0.26.3";
             archMap = {
               aarch64-darwin = {
                 filename = "pkl-macos-aarch64";
-                hash = "sha256-KRNAU2dpTTrDflggAJW5mmrmH+UKKz7F9cn0nPBUhOI=";
+                hash = "sha256-BwAgZOYPK5EdufBHmN4pNFyDFVoLFAvwhSKWdh29g6A=";
               };
               x86_64-darwin = {
                 filename = "pkl-macos-amd64";
-                hash = "sha256-JmjT9jmNy6zcxjO8DMpxdB/2SuaCSiIecZ2ls95yqjk=";
+                hash = "sha256-gKe6BkOcbAlGj4MXP473LAQhRKFBSu4NLGwEPWkfj6Q=";
               };
               x86_64-linux = {
                 filename = "pkl-linux-amd64";
-                hash = "sha256-nJaSyFhf8+/9ik+cGtpiuZspKkBSWoARRVYKVicw+UY=";
+                hash = "sha256-NKCCy2A7eSR4h2IFiiMOI4trPhtcUlVJ+sWgdldpxH4=";
               };
               x86_64-windows = {
                 filename = "pkl-windows-amd64.exe";
-                hash = "sha256-FGINZX+lTS8MFjh+7yYvIrh5sBEzGfeQ2NlG5pynSf8=";
+                hash = "sha256-deAok6HgDOZDDrElxiTsLqFG5kZbLZUSdm4jhGo8rz4=";
               };
             };
           };

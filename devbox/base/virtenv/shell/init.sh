@@ -40,7 +40,7 @@ function __repo_shell_root_dir() {
 #>>-------------------------------------------------------------------------
 
 __repo_shell_opts_set
-(return 0 2>/dev/null) && _SOURCED="1" || _SOURCED="0"
+(return 0 2> /dev/null) && _SOURCED="1" || _SOURCED="0"
 
 _DIR_ROOT="$(__repo_shell_root_dir "$REPO_DEVBOX_VIRTENV_DIR")"
 _DIR_SOURCES="$REPO_DEVBOX_VIRTENV_DIR/shell"
@@ -63,7 +63,8 @@ else
 fi
 
 #>- Vendor
-export HELM_PLUGINS="$REPO_ROOT/.devbox/helm/plugins"
+export HELM_PLUGINS="$REPO_ROOT/.devbox/virtenv/helm/plugins"
+export KREW_ROOT="$REPO_ROOT/.devbox/virtenv/krew"
 
 #! Check if this is being invoked by `devbox run ...`
 # [[ -n "${DEVBOX_RUN_CMD-}" ]] && IS_DEVBOX_RUN="1"
@@ -135,7 +136,7 @@ function __repo_init_env() {
         log_step_sub "Loaded variable (.env.local): $var_key"
       fi
     done
-  done <"$REPO_ROOT/.env.local"
+  done < "$REPO_ROOT/.env.local"
 }
 
 function __repo_init_env_full() {
@@ -149,7 +150,9 @@ function __repo_init_env_full() {
 
   #>- Other
   [[ -z "${PNPM_HOME-}" ]] && export PNPM_HOME="$HOME/.local/share/pnpm"
-  [[ -z "${KREW_ROOT-}" ]] && export KREW_ROOT="$HOME/.krew"
+
+  mkdir -p "$HELM_PLUGINS"
+  mkdir -p "$KREW_ROOT"
 
   #>- Deno
   local DENO_GLOBAL_BIN="$HOME/.deno/bin"

@@ -7,13 +7,13 @@ include: []
 create_files: {}
 
 env:
-  GO_VERSION: 1.20.2
+  GO_VERSION: 1.23.1
   GOPATH: $PWD/.devbox/runtimes/go
   PATH: $PWD/.devbox/runtimes/go/bin:$PATH
 
 packages:
-  go: "1.20.2"
-  golangci-lint: "1.52"
+  go: "1.23.1"
+  golangci-lint: "1.61.0"
 
 shell:
   scripts: {}

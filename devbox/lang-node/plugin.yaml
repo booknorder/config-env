@@ -1,24 +1,19 @@
-$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json
+$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json
 name: bno-lang-node
 version: ""
-description: Setup runtime Node.js
+description: Setup runtime Nodejs
 readme: README.md
-include: []
-create_files: {}
 
 env:
-  DENO_VERSION: "1.44.4" # "1.43.5"
-  NODE_VERSION: "22.8.0" # "20.11.1"
-  # PNPM_VERSION: "9.3.0" # "8.15.5"
+  DENO_VERSION: "1.46.3"
+  NODE_VERSION: "22.8.0"
   DEVBOX_COREPACK_ENABLED: "true"
 
 packages:
-  deno: "1.44.4"
+  deno: "1.46.3"
   nodejs: "22.8.0"
-  #nodePackages.pnpm: "9.3.0"
 
 shell:
-  scripts: {}
   init_hook:
     - |
       function __log_echo() {
@@ -26,11 +21,10 @@ shell:
           echo "$1"
         fi
       }
+      
       __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
       __log_echo "  Initializing Devbox: Node.js"
       __log_echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-      
-      
       __log_echo " ➜ NODE_VERSION: $(node -v)"
       __log_echo " ➜ DENO_VERSION: $(deno --version)"
 

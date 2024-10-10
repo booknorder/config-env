@@ -1,11 +1,9 @@
 {
-  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.12.0/.schema/devbox.schema.json",
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json",
   "name": "bno-lang-rust",
-  "version": "1.10.0",
+  "version": "2.0.0",
   "description": "Setup runtime Rust",
   "readme": "README.md",
-  "include": [],
-  "create_files": {},
   "env": {
     "RUSTUP_HOME": "$PWD/.devbox/runtimes/rust",
     "LIBRARY_PATH": "$LIBRARY_PATH:$PWD/.devbox/nix/profile/default/lib"
@@ -15,7 +13,6 @@
     "rustup": "latest"
   },
   "shell": {
-    "scripts": {},
     "init_hook": [
       "function __log_echo() {\n  if [[ \"${REPO_SCRIPT_DEBUG-1}\" == \"1\" ]]; then\n    echo \"$1\"\n  fi\n}\n\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n__log_echo \"  Initializing Devbox: Rust\"\n__log_echo \"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\"\n\n__log_echo \" ➜ RUSTUP_HOME: $RUSTUP_HOME\"\n__log_echo \" ➜ LIBRARY_PATH: $LIBRARY_PATH\"\n\n__log_echo \" ➜ Create home directory\"\nmkdir -p \"$RUSTUP_HOME\"\n\nif rustup toolchain list | grep -q nightly; then\n  __log_echo \" ➜ Rust nightly toolchain already installed\"\nelse\n  __log_echo \" ➜ Install Rust nightly toolchain\"\n  __log_echo \"$(rustup toolchain install nightly)\"\nfi\n\n__log_echo \" ➜ Install rust toolchain\"\n__log_echo \"$(rustup default stable)\"\n\n__log_echo \" ➜ Install clippy & rust-src\"\n__log_echo \"$(rustup component add clippy)\"\n__log_echo \"$(rustup component add rust-src)\"\n\n__log_echo \" ➜ Run cargo fetch\"\ncargo fetch &>/dev/null || true\n\n__log_echo \" ➜ Details\"\n__log_echo \"$(rustup show)\"\n"
     ]

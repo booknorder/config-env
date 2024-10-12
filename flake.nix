@@ -228,23 +228,23 @@
               pkg = programs.deno;
               arch = programs.deno.archMap.${system} or (throw "Unsupported system: ${system}");
             in
-            stdenv.mkDerivation rec {
-              name = "${pkg.name}-${pkg.version}";
+            pkgs.runCommand "${pkg.name}-${pkg.version}" {
+              nativeBuildInputs = [ pkgs.installShellFiles ];
               src = pkgs.fetchzip {
                 name = "${pkg.name}-${pkg.version}";
                 url = "${pkg.repo}/releases/download/${pkg.tag}/${arch.name}${arch.ext}";
                 stripRoot = false;
                 hash = "${arch.hash}";
               };
-              # unpackPhase = "true";
-              buildPhase = "true";
-              installPhase =
-                ''
-                  mkdir -p $out/bin
-                  chmod +x $src/deno
-                  ln -s $src/deno $out/bin/
-                '';
-            };
+            } ''
+              mkdir -p $out/bin
+              cp $src/deno $out/bin/deno
+              chmod +x $out/bin/deno
+              installShellCompletion --cmd deno \
+                --bash <($out/bin/deno completions bash) \
+                --fish <($out/bin/deno completions fish) \
+                --zsh <($out/bin/deno completions zsh)
+            '';
 
           #>>- Hasura CLI
           ${programs.hasura-cli.name} =

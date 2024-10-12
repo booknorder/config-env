@@ -72,6 +72,29 @@
               };
             };
           };
+          deno = {
+            name = "deno";
+            repo = "https://github.com/denoland/deno";
+            version = "v2.0.0";
+            tag = "v2.0.0";
+            archMap = {
+              aarch64-darwin = {
+                hash = "sha256-rRIrHIyCM3hGn7SXLAzG2vwBNT36XHMD0Zm9wd7p1ek=";
+                name = "deno-aarch64-apple-darwin";
+                ext = ".zip";
+              };
+              x86_64-linux = {
+                hash = "sha256-0gG4ErvGzCVlAS5SwqnLmWXXaK/Si7wroprmZ79yUKY=";
+                name = "deno-x86_64-unknown-linux-gnu";
+                ext = ".zip";
+              };
+              x86_64-windows = {
+                hash = "sha256-NOpSXuquPvLrcuX3wjf7+ET6kA5rjmZsXbJVP1b504I=";
+                name = "deno-x86_64-pc-windows-msvc";
+                ext = ".zip";
+              };
+            };
+          };
           hasura-cli = {
             name = "hasura-cli";
             repo = "https://github.com/hasura/graphql-engine";
@@ -196,6 +219,30 @@
                   mkdir -p $out/bin
                   cp $src $out/bin/atlas
                   chmod +x $out/bin/atlas
+                '';
+            };
+
+          #>>- Deno
+          ${programs.deno.name} =
+            let
+              pkg = programs.deno;
+              arch = programs.deno.archMap.${system} or (throw "Unsupported system: ${system}");
+            in
+            stdenv.mkDerivation rec {
+              name = "${pkg.name}-${pkg.version}";
+              src = pkgs.fetchzip {
+                name = "${pkg.name}-${pkg.version}";
+                url = "${pkg.repo}/releases/download/${pkg.tag}/${arch.name}${arch.ext}";
+                stripRoot = false;
+                hash = "${arch.hash}";
+              };
+              # unpackPhase = "true";
+              buildPhase = "true";
+              installPhase =
+                ''
+                  mkdir -p $out/bin
+                  chmod +x $src/deno
+                  ln -s $src/deno $out/bin/
                 '';
             };
 

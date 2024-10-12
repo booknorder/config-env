@@ -79,7 +79,7 @@
             tag = "v2.0.0";
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-rRIrHIyCM3hGn7SXLAzG2vwBNT36XHMD0Zm9wd7p1ek=";
+                hash = "sha256-03fJO1fbunRBmdKrQYt9VdNhYetGvf/xwrn+EneoARI=";
                 name = "deno-aarch64-apple-darwin";
                 ext = ".zip";
               };

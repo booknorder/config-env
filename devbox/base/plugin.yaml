@@ -21,17 +21,17 @@ packages:
   fd: latest
   git: latest
   rclone: "1"
-  watchexec: "2"
-  shellcheck: "0.10.0"
+  watchexec: latest
+  shellcheck: latest
   # Project
-  go-task: "3.38.0"
-  gomplate: "3.11.8"
-  helmfile: "0.168.0"
+  go-task: "3"
+  gomplate: "4"
+  helmfile: "0.169"
   jq: latest
   krew: latest
-  kubectl: "1.29"
+  kubectl: "1.31"
   kubectx: latest
-  kubernetes-helm: "3.16.1"
+  kubernetes-helm: "3.16"
   nushell: latest
   stern: latest
   yq: latest

@@ -136,7 +136,7 @@
             tag = "v0.18.0";
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-DwlZ8Ssadnv/pe5AxqJVt3dY0EnDbtDWoa1oMKx/eKM=";
+                hash = "sha256-fjASF+tNjw7VH+hcecA+rwUDhHUslCfhYxLrkiLp+XU=";
                 name = "darwin_arm64";
                 ext = ".tar.gz";
               };

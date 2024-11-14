@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json",
   "name": "bno-lang-go",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Setup runtime GO",
   "readme": "README.md",
   "env": {

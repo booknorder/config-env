@@ -17,59 +17,65 @@
         #@@ Programs
         programs = {
           atlas-go = {
+            # URL: https://release.ariga.io/atlas/atlas-*
+            # - https://release.ariga.io/atlas/atlas-darwin-arm64-v0.28.0
+            # - https://release.ariga.io/atlas/atlas-linux-amd64-v0.28.0
             name = "atlas-go";
             repo = "https://release.ariga.io";
-            version = "v0.24.0";
-            tag = "v0.24.0";
+            version = "v0.28.0"; # v0.24.0
+            tag = "v0.28.0"; # v0.24.0
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-Udh+EMNN5FlWT4Z7pzyX6R8YXZc7DqpM80LhI79SV2I=";
+                hash = "sha256-x49P3X4DFfp9Fze0fVBv6h05uovYMQrBK+s2EbalLLU=";
                 name = "darwin-arm64";
                 ext = "";
               };
-              x86_64-darwin = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "darwin-amd64";
-                ext = "";
-              };
               x86_64-linux = {
-                hash = "sha256-V6K6c9RvqBdUPSKt8uWr5LXeCc74B+At4+r5NpExk1s=";
+                hash = "sha256-9DvV7M7bK3GReKoTLNrA80WQORNDaM+eOqPQpMqFL5s=";
                 name = "linux-amd64";
                 ext = "";
               };
-              x86_64-windows = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "windows-amd64";
-                ext = ".exe";
-              };
+              # x86_64-darwin = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "darwin-amd64";
+              #   ext = "";
+              # };
+              # x86_64-windows = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "windows-amd64";
+              #   ext = ".exe";
+              # };
             };
           };
           atlas-go-community = {
+            # URL: https://release.ariga.io/atlas/atlas-community-*
+            # - https://release.ariga.io/atlas/atlas-community-darwin-arm64-v0.28.0
+            # - https://release.ariga.io/atlas/atlas-community-linux-amd64-v0.28.0
             name = "atlas-go-community";
             repo = "https://release.ariga.io";
-            version = "v0.24.0";
-            tag = "v0.24.0";
+            version = "v0.28.0"; # v0.24.0
+            tag = "v0.28.0"; # v0.24.0
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+                hash = "sha256-i9M5ZWvGyGFAQuPqw8EGT/98YGnHlhkZYstLVDqF+is=";
                 name = "darwin-arm64";
                 ext = "";
               };
-              x86_64-darwin = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "darwin-amd64";
-                ext = "";
-              };
               x86_64-linux = {
-                hash = "sha256-KcNDCUdlbUkiA+A2jekqP6sqtcMuQwh9HEQ2aPX1wLE=";
+                hash = "sha256-SG82kFtLDUl4lp0Q1X4oKsHeClrhjAns35Z/hbo+Y0s=";
                 name = "linux-amd64";
                 ext = "";
               };
-              x86_64-windows = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "windows-amd64";
-                ext = ".exe";
-              };
+              # x86_64-darwin = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "darwin-amd64";
+              #   ext = "";
+              # };
+              # x86_64-windows = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "windows-amd64";
+              #   ext = ".exe";
+              # };
             };
           };
           deno = {
@@ -88,90 +94,90 @@
                 name = "deno-x86_64-unknown-linux-gnu";
                 ext = ".zip";
               };
-              x86_64-windows = {
-                hash = "sha256-NOpSXuquPvLrcuX3wjf7+ET6kA5rjmZsXbJVP1b504I=";
-                name = "deno-x86_64-pc-windows-msvc";
-                ext = ".zip";
-              };
+              # x86_64-windows = {
+              #   hash = "sha256-NOpSXuquPvLrcuX3wjf7+ET6kA5rjmZsXbJVP1b504I=";
+              #   name = "deno-x86_64-pc-windows-msvc";
+              #   ext = ".zip";
+              # };
             };
           };
           hasura-cli = {
             name = "hasura-cli";
             repo = "https://github.com/hasura/graphql-engine";
-            version = "v2.38.0";
-            tag = "v2.38.0";
+            version = "v2.44.0"; # v2.38.0
+            tag = "v2.44.0"; # v2.38.0
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-MqwTLEYwKJHfOXWJW8SQ6asweZTX7Ki45Jj2EQuf5ts=";
+                hash = "sha256-WMunpTbMFGyqVWALv3UEYQNL3FzziygrVmmvttMH6ag=";
                 name = "darwin-arm64";
                 ext = "";
               };
-              x86_64-darwin = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "darwin-amd64";
-                ext = "";
-              };
               x86_64-linux = {
-                hash = "sha256-v080WO4zcA8CCKIr0v/Sh2mlKz47nS/jfGoaWHELwQ4=";
+                hash = "sha256-yYVl0peQzHt5uEz3RYEuQ64/Ju2WvmuioNzpXQkpKGI=";
                 name = "linux-amd64";
                 ext = "";
               };
-              x86_64-windows = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "windows-amd64";
-                ext = ".exe";
-              };
+              # x86_64-darwin = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "darwin-amd64";
+              #   ext = "";
+              # };
+              # x86_64-windows = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "windows-amd64";
+              #   ext = ".exe";
+              # };
             };
           };
           mutagen = {
             name = "mutagen";
             repo = "https://github.com/mutagen-io/mutagen";
-            version = "v0.17.5";
-            tag = "v0.17.5";
+            version = "v0.18.0";
+            tag = "v0.18.0";
             archMap = {
               aarch64-darwin = {
-                hash = "sha256-nvvhd/Q20E2OOO5tvSP0a9TRgC3qKFYWbPKVlUPY1A0=";
+                hash = "sha256-DwlZ8Ssadnv/pe5AxqJVt3dY0EnDbtDWoa1oMKx/eKM=";
                 name = "darwin_arm64";
                 ext = ".tar.gz";
               };
-              x86_64-darwin = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "darwin_amd64";
-                ext = ".tar.gz";
-              };
               x86_64-linux = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+                hash = "sha256-yCveDs04EGUAh6j9mei69KMRm4WpyxQVWg2SCWADdNQ=";
                 name = "linux_amd64";
                 ext = ".tar.gz";
               };
-              x86_64-windows = {
-                hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
-                name = "windows_amd64";
-                ext = ".zip";
-              };
+              # x86_64-darwin = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "darwin_amd64";
+              #   ext = ".tar.gz";
+              # };
+              # x86_64-windows = {
+              #   hash = "sha256-0jSRnqDWMdZmqzGkZxPq3gpDoJFQR/ShZq0f07eZPaw=";
+              #   name = "windows_amd64";
+              #   ext = ".zip";
+              # };
             };
           };
           pkl = {
             name = "pkl";
             repo = "https://github.com/apple/pkl";
-            tag = "0.26.3";
+            tag = "0.27.0";
             archMap = {
               aarch64-darwin = {
                 filename = "pkl-macos-aarch64";
-                hash = "sha256-BwAgZOYPK5EdufBHmN4pNFyDFVoLFAvwhSKWdh29g6A=";
-              };
-              x86_64-darwin = {
-                filename = "pkl-macos-amd64";
-                hash = "sha256-gKe6BkOcbAlGj4MXP473LAQhRKFBSu4NLGwEPWkfj6Q=";
+                hash = "sha256-M/mUHGgw5v8K0Ny+lUugKGOKXCt8L518BLBMfbyWFDI=";
               };
               x86_64-linux = {
                 filename = "pkl-linux-amd64";
-                hash = "sha256-NKCCy2A7eSR4h2IFiiMOI4trPhtcUlVJ+sWgdldpxH4=";
+                hash = "sha256-5MdrbdAkVtrI0wDqHxxQEC9kFMuUdWdDZHfL98Las6o=";
               };
-              x86_64-windows = {
-                filename = "pkl-windows-amd64.exe";
-                hash = "sha256-deAok6HgDOZDDrElxiTsLqFG5kZbLZUSdm4jhGo8rz4=";
-              };
+              # x86_64-darwin = {
+              #   filename = "pkl-macos-amd64";
+              #   hash = "sha256-gKe6BkOcbAlGj4MXP473LAQhRKFBSu4NLGwEPWkfj6Q=";
+              # };
+              # x86_64-windows = {
+              #   filename = "pkl-windows-amd64.exe";
+              #   hash = "sha256-deAok6HgDOZDDrElxiTsLqFG5kZbLZUSdm4jhGo8rz4=";
+              # };
             };
           };
         };

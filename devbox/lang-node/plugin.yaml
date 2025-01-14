@@ -1,4 +1,4 @@
-$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json
+$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.7/.schema/devbox-plugin.schema.json
 name: bno-lang-node
 version: ""
 description: Setup runtime Nodejs

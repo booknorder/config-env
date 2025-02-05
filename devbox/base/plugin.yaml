@@ -1,4 +1,4 @@
-$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json
+$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.7/.schema/devbox.schema.json
 name: bno
 version: ""
 description: Setup Shell/Devbox environment consistently across all projects
@@ -52,13 +52,6 @@ env:
 shell:
   init_hook:
     - |
-      export HELM_PLUGIN_S3_VERSION="${HELM_PLUGIN_S3_VERSION-0.16.0}"
-      export HELM_PLUGIN_DIFF_VERSION="${HELM_PLUGIN_DIFF_VERSION-3.9.7}"
-      export HELM_PLUGIN_DASHBOARD_VERSION="${HELM_PLUGIN_DASHBOARD_VERSION-1.3.3}"
-      export HELM_PLUGIN_SECRETS_VERSION="${HELM_PLUGIN_SECRETS_VERSION-4.6.0}"
-      export HELM_PLUGIN_GIT_VERSION="${HELM_PLUGIN_GIT_VERSION-0.16.0}"
-      export HELM_PLUGIN_MAPKUBEAPIS_VERSION="${HELM_PLUGIN_MAPKUBEAPIS_VERSION-0.4.1}"
-      
       # Load shell sources
       source {{ .Virtenv }}/shell/init.sh
       # source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')

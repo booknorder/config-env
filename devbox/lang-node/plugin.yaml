@@ -1,4 +1,4 @@
-$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.13.7/.schema/devbox-plugin.schema.json
+$schema: https://raw.githubusercontent.com/jetpack-io/devbox/0.14.0/.schema/devbox-plugin.schema.json
 name: bno-lang-node
 version: ""
 description: Setup runtime Nodejs
@@ -6,12 +6,12 @@ readme: README.md
 
 env:
   DENO_VERSION: "1.46.3"
-  NODE_VERSION: "22.8.0"
+  NODE_VERSION: "22.14.0"
   DEVBOX_COREPACK_ENABLED: "true"
 
 packages:
   deno: "1.46.3"
-  nodejs: "22.8.0"
+  nodejs: "22.14.0"
 
 shell:
   init_hook:

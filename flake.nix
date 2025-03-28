@@ -160,15 +160,15 @@
           pkl = {
             name = "pkl";
             repo = "https://github.com/apple/pkl";
-            tag = "0.27.0";
+            tag = "0.28.1";
             archMap = {
               aarch64-darwin = {
                 filename = "pkl-macos-aarch64";
-                hash = "sha256-M/mUHGgw5v8K0Ny+lUugKGOKXCt8L518BLBMfbyWFDI=";
+                hash = "sha256-05Pe2qcGfrXJb/mciec/RjqW9ktOIxv+7kK5hUexD+A=";
               };
               x86_64-linux = {
                 filename = "pkl-linux-amd64";
-                hash = "sha256-5MdrbdAkVtrI0wDqHxxQEC9kFMuUdWdDZHfL98Las6o=";
+                hash = "sha256-/edD7Spf2hzCTOLJkC6g0bxekRot94R8dKd84TBWvzk=";
               };
               # x86_64-darwin = {
               #   filename = "pkl-macos-amd64";

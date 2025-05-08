@@ -180,6 +180,21 @@
               # };
             };
           };
+          tailwindcss = {
+            name = "pkl";
+            repo = "https://github.com/tailwindlabs/tailwindcss";
+            tag = "v4.1.5";
+            archMap = {
+              aarch64-darwin = {
+                filename = "tailwindcss-macos-arm64";
+                hash = "sha256-j9ogIXTCFNcg6v5J7bra+u18udASidJEYtktLCYDeH4=";
+              };
+              x86_64-linux = {
+                filename = "tailwindcss-linux-x64";
+                hash = "sha256-nSWKd4bCL4VyrqIO01hI+MvvHQYnfk5rl62FYf/CHgc=";
+              };
+            };
+          };
         };
       in
       {
@@ -317,6 +332,28 @@
                   mkdir -p $out/bin
                   cp $src $out/bin/pkl
                   chmod +x $out/bin/pkl
+                '';
+            };
+
+          #>>- Tailwind CSS
+          ${programs.tailwindcss.name} =
+            let
+              pkg = programs.pkl;
+              arch = programs.pkl.archMap.${system} or (throw "Unsupported system: ${system}");
+            in
+            stdenv.mkDerivation rec {
+              name = "${pkg.name}-v${pkg.tag}";
+              src = pkgs.fetchurl {
+                url = "${pkg.repo}/releases/download/${pkg.tag}/${arch.filename}";
+                hash = "${arch.hash}";
+              };
+              unpackPhase = ":";
+              buildPhase = ":";
+              installPhase =
+                ''
+                  mkdir -p $out/bin
+                  cp $src $out/bin/tailwindcss
+                  chmod +x $out/bin/tailwindcss
                 '';
             };
 

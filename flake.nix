@@ -181,7 +181,7 @@
             };
           };
           tailwindcss = {
-            name = "pkl";
+            name = "tailwindcss";
             repo = "https://github.com/tailwindlabs/tailwindcss";
             tag = "v4.1.5";
             archMap = {
@@ -338,8 +338,8 @@
           #>>- Tailwind CSS
           ${programs.tailwindcss.name} =
             let
-              pkg = programs.pkl;
-              arch = programs.pkl.archMap.${system} or (throw "Unsupported system: ${system}");
+              pkg = programs.tailwindcss;
+              arch = programs.tailwindcss.archMap.${system} or (throw "Unsupported system: ${system}");
             in
             stdenv.mkDerivation rec {
               name = "${pkg.name}-v${pkg.tag}";

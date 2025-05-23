@@ -216,6 +216,24 @@ function __repo_init_helm() {
 }
 
 #>>-------------------------------------------------------------------------
+#>>-  Run: Mise
+#>>-------------------------------------------------------------------------
+
+# If `.mise.toml` file in root, ensure tools installed and activate the environment.
+# Important to do this before running any other commands, as mise may be providing
+# tools such as sops which may be required for the rest of the script.
+
+if [[ -f "${REPO_ROOT}/.mise.toml" ]]; then
+  if [[ "${_SOURCED}" == "1" ]]; then
+    log_step "Mise: install"
+    mise install
+  fi
+
+  log_step "Mise: activate"
+  eval "$(mise activate bash)"
+fi
+
+#>>-------------------------------------------------------------------------
 #>>-  Run: Functions
 #>>-------------------------------------------------------------------------
 

@@ -17,24 +17,8 @@ packages:
   rsync: latest
   wget: latest
   zip: latest
-  # Utilities
-  fd: latest
-  git: latest
-  rclone: "1"
-  watchexec: latest
-  shellcheck: latest
-  # Project
-  go-task: "3"
-  gomplate: "4"
-  helmfile: "0.169"
-  jq: latest
-  krew: latest
-  kubectl: "1.31"
-  kubectx: latest
-  kubernetes-helm: "3.16"
+  # Extras
   nushell: latest
-  stern: latest
-  yq: latest
 
 create_files:
   '{{ .Virtenv }}/bin/devbox-run': virtenv/bin/devbox-run
@@ -54,7 +38,6 @@ shell:
     - |
       # Load shell sources
       source {{ .Virtenv }}/shell/init.sh
-      # source <(bash -c 'source {{ .Virtenv }}/shell/init.sh; declare -p')
       
       # Create .gitignore file if not exists
       if [ ! -f "$REPO_ROOT/.gitignore" ]; then

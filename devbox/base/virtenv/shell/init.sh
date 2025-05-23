@@ -88,6 +88,18 @@ function __repo_init_sources() {
   source "$_DIR_SOURCES/03.ssh.sh"
 }
 
+function __repo_init_mise() {
+  if [[ -f "${REPO_ROOT}/.mise.toml" ]]; then
+    if [[ "${_SOURCED}" == "1" ]]; then
+      log_step "Mise: install"
+      mise install
+    fi
+
+    log_step "Mise: activate"
+    eval "$(mise activate bash)"
+  fi
+}
+
 function __repo_init_perms() {
   if [[ "${_SOURCED}" == "1" ]]; then
     #>- Set script permissions to executable
@@ -216,24 +228,6 @@ function __repo_init_helm() {
 }
 
 #>>-------------------------------------------------------------------------
-#>>-  Run: Mise
-#>>-------------------------------------------------------------------------
-
-# If `.mise.toml` file in root, ensure tools installed and activate the environment.
-# Important to do this before running any other commands, as mise may be providing
-# tools such as sops which may be required for the rest of the script.
-
-if [[ -f "${REPO_ROOT}/.mise.toml" ]]; then
-  if [[ "${_SOURCED}" == "1" ]]; then
-    log_step "Mise: install"
-    mise install
-  fi
-
-  log_step "Mise: activate"
-  eval "$(mise activate bash)"
-fi
-
-#>>-------------------------------------------------------------------------
 #>>-  Run: Functions
 #>>-------------------------------------------------------------------------
 
@@ -255,6 +249,12 @@ function time_func() {
 
 #>- Execute Functions (order matters)
 time_func __repo_init_sources
+
+# If `.mise.toml` file in root, ensure tools installed and activate the environment.
+# Important to do this before running any other commands, as mise may be providing
+# tools such as sops which may be required for the rest of the script.
+time_func __repo_init_mise
+
 time_func __repo_init_perms
 time_func __repo_init_env_full
 time_func __repo_init_path

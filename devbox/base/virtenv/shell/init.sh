@@ -89,7 +89,9 @@ function __repo_init_sources() {
 }
 
 function __repo_init_mise() {
-  if [[ -f "${REPO_ROOT}/.mise.toml" ]]; then
+  if [[ -f "${REPO_ROOT}/.mise.toml" || -f "${REPO_ROOT}/mise.toml" ]]; then
+    mise trust --all
+
     if [[ "${_SOURCED}" == "1" ]]; then
       log_step "Mise: install"
       mise install

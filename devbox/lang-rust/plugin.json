@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.14.0/.schema/devbox-plugin.schema.json",
   "name": "bno-lang-rust",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Setup runtime Rust",
   "readme": "README.md",
   "env": {

@@ -40,7 +40,14 @@ function kubeconf_perms() {
 #>>-------------------------------------------
 
 function __fs_glob_chmod_exec() {
-  chmod +x "$1"/*
+  # chmod +x "$1"/* (gives error if invalid file like dangling symlink)
+  local file
+
+  for file in "$1"/*; do
+    if [[ -f "$file" ]] || [[ -L "$file" ]]; then
+      chmod +x "$file" 2> /dev/null || true
+    fi
+  done
 }
 
 #>>-------------------------------------------

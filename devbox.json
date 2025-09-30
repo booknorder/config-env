@@ -1,10 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.13.4/.schema/devbox.schema.json",
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
     "curl@latest",
-    "go-task@3.35.1",
-    "gomplate@3.11.7",
-    "jq@latest",
     "netcat-gnu@0.7.1",
     "nushell@latest",
     "wget@latest"
@@ -13,6 +10,9 @@
     "scripts": {},
     "init_hook": [
       "export REPO_ROOT=\"$(pwd)\"",
+      "mise trust --all",
+      "mise install",
+      "eval \"$(mise activate bash)\"",
       "npm install",
       "npm exec lefthook install"
     ]

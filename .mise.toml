@@ -1,0 +1,24 @@
+[env]
+_.path = []
+
+#~ Tools
+[tools]
+node = { version = "24.9.0", postinstall = "corepack enable" }
+
+## Tools: Language Utils
+shellcheck = "latest"
+shfmt = "latest"
+
+## Tools: Shell Utils
+argc = "1.22.0"
+fd = "latest"
+fzf = "latest"
+jq = "latest"
+rclone = "1"
+ripgrep = "latest"
+watchexec = "latest"
+yq = "latest"
+
+## Tools: Development
+gomplate = "3"
+task = "3"

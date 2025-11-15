@@ -34,6 +34,7 @@ create_files:
   '{{ .Virtenv }}/templates/gitignore': virtenv/templates/gitignore
 env:
   REPO_DEVBOX_VIRTENV_DIR: '{{ .Virtenv }}'
+  REPO_DEVBOX_FORCE_REFRESH: '2'
 shell:
   init_hook:
     - |
